@@ -1,0 +1,15 @@
+{% extends 'admin/admin-layout.html.twig' %}
+
+{% block title %}New Product{% endblock %}
+
+{% set actions = [
+    { 'path': 'app_product_index', 'label': 'Liste des produits', 'iconClass': "bi bi-list-task"},
+] %}
+
+{% block body %}
+    <h1>Create new Product</h1>
+    {{ include("shared/page-actions.html.twig", { actions: actions })  }}
+    <div class="custom-page-content p-2">
+        {{ include('product/_form.html.twig') }}
+    </div>
+{% endblock %}

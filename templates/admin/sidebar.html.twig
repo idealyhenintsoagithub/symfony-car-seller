@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light navbar-vertical navbar-expand-xl col-sm-3 justify-content-center align-items-start">
+  <div>
+    <div class="d-flex align-items-start">
+      <div class="toggle-icon-wrapper">
+        <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" aria-label="Toggle Navigation" data-bs-original-title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+      </div>
+      <a class="navbar-brand" href="index.html">
+        <div class="d-flex align-items-center py-3">
+          <img class="me-2" src="assets/img/icons/spot-illustrations/falcon.png" alt="" width="40">
+        </div>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+      <div class="navbar-vertical-content scrollbar">
+        <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href={{ path("app_home") }} >
+              <i class="bi bi-house-door-fill"></i>
+              Acceuil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href={{ path("app_product_index") }} >
+              <i class="bi bi-cart-fill"></i>
+              Produits
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href={{ path("app_vendor_index") }} >
+              <i class="bi bi-cone"></i>
+              Fournisseurs
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="#">
+              <i class="bi bi-cart-plus-fill"></i>
+              Commande
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

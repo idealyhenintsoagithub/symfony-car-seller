@@ -1,0 +1,10 @@
+<div class="py-2 product-title">
+  <h4>Trouvez votre game parmis nos fournisseurs</h4>
+  <div class="container pt-2">
+    <div class="row">
+      {% for vendor in vendors %}
+        {{ include("home/car-brand-item.html.twig", { vendor: vendor }) }}
+      {% endfor %}
+    </div>
+  </div>
+</div>

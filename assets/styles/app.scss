@@ -1,0 +1,9 @@
+@import './variables.scss';
+@import './home.scss';
+
+body {
+color: $default-font-color;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}

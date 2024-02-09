@@ -1,0 +1,12 @@
+<div class="product-item">
+  <a href={{ path("product_detail", { id: product.id }) }}>
+    <img src={{ asset(product.image ? "images/products/" ~ product.image : "images/rover.jpg") }} width="100%" height="auto" class="car-image">
+    <div class="p-4 d-flex justify-content-between">
+      <div>{{ product.title }}</div>
+      <div>
+        <i class="bi bi-currency-dollar"></i>
+        {{ product.priceTtc }} / Unit
+      </div>  
+    </div>
+  </a>
+</div>

@@ -7,16 +7,20 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('admin_app') }}
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('admin_app') }}
         {% endblock %}
     </head>
     <body>
-        <div class="container-fluid">
-            {{ include('layout/navbar.html.twig') }}
-            {% block body %}{% endblock %}
+        <div class="container d-flex">
+            {{ include('admin/sidebar.html.twig') }}
+            <div class="page-content col pt-5">
+                {% block body %}{% endblock %}
+            </div>
         </div>
     </body>
 </html>

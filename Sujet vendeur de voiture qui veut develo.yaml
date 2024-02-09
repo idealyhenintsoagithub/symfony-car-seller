@@ -1,0 +1,28 @@
+Sujet vendeur de voiture qui veut developper un appli
+  Entiter:
+    - Product (Produits)
+      - title: String (titre)
+      - description: String (description)
+      - stock: number (Quantite en stock)
+      - marque: Relation OneToOne Vendor (Marque)
+      - priceTtc (Prix TTC)
+      - type (type)
+      - genre
+    
+    - Vendor (Fournisseur)
+      - name: string (Nom du fournisseur)
+    
+    - client (Client)
+      - firstName: String
+      - lastName: String
+      - phone: string
+      - email: string
+    
+    - order (Commande)
+      - OrderItem: OneToMany -> OrderItem
+      - totlaPrice: number
+    
+    - orderItem
+      - Product: Relation OneToOne -> Product
+      - productNumber: number
+      - productPrice: number

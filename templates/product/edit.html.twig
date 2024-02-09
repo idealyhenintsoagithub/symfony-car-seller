@@ -1,0 +1,21 @@
+{% extends 'admin/admin-layout.html.twig' %}
+
+{% block title %}Modification produit{% endblock %}
+
+{% set actions = [
+    { 
+        'path': 'app_product_index', 
+        'label': 'Liste des produits', 
+        'iconClass': "bi bi-list-task"
+    }
+] %}
+
+{% block body %}
+    <h1>Modification de produit</h1>
+
+    {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+
+    <div class="custom-page-content p-2">
+        {{ include('product/_form.html.twig', {'button_label': 'Mettre a jour'}) }}
+    </div>
+{% endblock %}

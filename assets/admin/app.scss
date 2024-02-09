@@ -1,0 +1,10 @@
+@import './variables.scss'; 
+
+body {
+  background-color: $body-color;
+}
+
+.custom-page-content {
+  box-shadow: $box-shadow;
+  background-color: $custom-page-content-bg;
+}

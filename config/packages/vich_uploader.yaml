@@ -1,0 +1,13 @@
+# config/packages/vich_uploader.yaml or app/config/config.yml
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        products:
+            uri_prefix: /images/products
+            upload_destination: '%kernel.project_dir%/public/images/products'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        vendors:
+            uri_prefix: /images/vendors
+            upload_destination: '%kernel.project_dir%/public/images/vendors'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

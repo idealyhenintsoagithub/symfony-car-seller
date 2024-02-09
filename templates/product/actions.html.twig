@@ -1,0 +1,44 @@
+<div class="dropdown">
+  <button 
+    class="btn btn-link dropdown-toggle" 
+    type="button" 
+    data-bs-toggle="dropdown" 
+    aria-expanded="false"
+  >
+    <i class="bi bi-three-dots-vertical"></i>
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <a 
+        class="dropdown-item d-flex align-items-center" 
+        href={{ path("app_product_show", { id: product.id }) }}
+      >
+        <i class="bi bi-eye"></i>
+        <div class="p-2">
+          Voire
+        </div> 
+      </a>
+    </li>
+    <li>
+      <a 
+        class="dropdown-item d-flex align-items-center" 
+        href={{ path("app_product_edit", { id: product.id }) }}
+      >
+      <i class="bi bi-pencil"></i>
+      <div class="p-2">
+        Modifier
+      </div>
+      </a></li>
+    <li>
+      <a 
+        class="dropdown-item d-flex align-items-center" 
+        href="#"
+      >
+        <i class="bi bi-trash"></i>
+        <div class="p-2">
+          Supprimer
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

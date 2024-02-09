@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product page{% endblock %}
+
+{% block body %}
+    <div id="bannier">
+        <img src="{{ asset('images/rover.jpg') }}" alt="Symfony!"/>
+        <div class="presentation-text">
+            <h2>Buy your dream car</h2>
+        </div>
+    </div>
+    <div class="container product-page">
+        <div class="product-title pt-4">
+            <h4>Acheter votre voiture en ligne</h4>
+        </div>
+        {{ include('home/car-brand.html.twig') }}
+        <div class="product-list-container">
+            {% for product in products %}
+                {{ include('home/product-item.html.twig', { product: product }) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

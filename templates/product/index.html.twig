@@ -1,0 +1,64 @@
+{% extends 'admin/admin-layout.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% set actions = [
+    {'path': 'app_product_new', 'label': 'Crée une produit', 'iconClass': 'bi bi-plus-lg'},
+] %}
+
+{% block body %}
+    <h1>Listes des products</h1>
+    {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+    <div class="custom-page-content p-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Stock</th>
+                    <th>PriceTtc</th>
+                    <th>Type</th>
+                    <th>Marque</th>
+                    <th>Genre</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>{{ product.priceTtc }}</td>
+                    <td>{{ product.type }}</td>
+                    <td>
+                        {% if product.brand.logo is defined %}
+                            <a href="{{ path('app_vendor_show', {'id': product.brand.id }) }}">
+                                {{
+                                    include("shared/table-image.html.twig", {
+                                        "imagePath": "images/vendors/" ~ product.brand.logo 
+                                    })
+                                }}
+                            </a>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>{{ product.gender }}</td>
+                    <td>
+                        {# <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
+                        <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
+                        {{ include("product/actions.html.twig", { product: product }) }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
