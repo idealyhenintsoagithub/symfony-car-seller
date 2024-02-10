@@ -6,21 +6,24 @@ use App\Entity\OrderItem;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-
-class AddToCartType extends AbstractType
+class CartItemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('quantity', IntegerType::class, [
+            ->add('quantity', NumberType::class, [
+                'label' => 'Quantiter',
                 'attr' => [
-                    'value' => 1
+                    'class' => 'form-control mr-2'
                 ]
             ])
-            ->add('add', SubmitType::class, [
-                'label' => 'Ajouter dans le panier'
+            ->add('remove', SubmitType::class, [
+                'label' => 'Supprimer',
+                'attr' => [
+                    'class' => 'btn btn-danger btn-sm text-white fw-bold'
+                ]
             ])
         ;
     }

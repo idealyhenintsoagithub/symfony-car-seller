@@ -1,9 +1,11 @@
 @import './variables.scss';
 @import './home.scss';
+@import './cart.scss';
 
 body {
-color: $default-font-color;
+  color: $default-font-color;
 }
+
 .dropdown-toggle::after {
   display: none !important;
 }

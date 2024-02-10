@@ -19,7 +19,7 @@ class OrderItem
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=Product::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Product::class)
      */
     private $product;
 

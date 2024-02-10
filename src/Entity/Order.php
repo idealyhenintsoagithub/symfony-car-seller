@@ -141,4 +141,18 @@ class Order
    
        return $total;
    }
+
+   /**
+     * Removes all items from the order.
+     *
+     * @return $this
+     */
+    public function removeAllOrderItem(): self
+    {
+        foreach ($this->getOrderItems() as $orderItem) {
+            $this->removeOrderItem($orderItem);
+        }
+
+        return $this;
+    }
 }

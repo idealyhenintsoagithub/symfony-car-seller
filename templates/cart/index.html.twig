@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pannier{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {{ form_start(form) }}
+            <div class="row">
+                    <div class="col-sm-8 order-container">
+                        <div class="row justify-content-end p-4">
+                            <div class="col-sm-2">
+                                {{ form_widget(form.save) }}
+                            </div>
+                            <div class="col-sm-2">
+                                {{ form_widget(form.clear) }}
+                            </div>
+                        </div>
+                    {% if cart.orderItems.count > 0 %}
+                        {% for orderItem in form.orderItems %}
+                            <div class="d-flex mb-5 align-items-center order-item">
+                                <div class="order-item-media">
+                                    <img 
+                                        src="{{ asset('/images/products/' ~ orderItem.vars.data.product.image ) }}" 
+                                        alt="{{ orderItem.vars.data.product.image }}"
+                                    >
+                                </div>
+                                <div class="order-item-content">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="product-name">
+                                            {{ orderItem.vars.data.product.title }}
+                                        </p>
+                                        <p class="product-price">
+                                            <i class="bi bi-currency-dollar"></i>
+                                            {{ orderItem.vars.data.product.priceTtc }}
+                                        </p>
+                                    </div>
+                                    <div class="order-description">
+                                        {{ orderItem.vars.data.product.description }}
+                                    </div>
+                                    <div class="mt-2 d-flex">
+                                        {{ form_widget(orderItem.quantity) }}
+                                        {{ form_widget(orderItem.remove) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-sm-4 cart-detail-container">
+                    <div>
+                        <h4>Detail du pannier</h4>
+                        <div class="d-flex justify-content-between">
+                            <p>Total</p>
+                            <p>
+                                <i class="bi bi-currency-dollar"></i>
+                                {{ cart.getTotal }}
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-success w-100 fw-bold text-center text-uppercase text-white">
+                            Acheter
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

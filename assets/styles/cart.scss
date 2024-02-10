@@ -1,0 +1,22 @@
+.product-name, .product-price, .cart-detail-container {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.order-container {
+  margin-top: 16px;
+  .order-item {
+    .order-item-media {
+      img {
+        width: 250px;
+      }
+    }
+    .order-item-content {
+      padding: 0px 24px;
+      width: 100%;
+      .order-description {
+        padding-bottom: 16px;
+      }
+    }
+  }
+}
