@@ -20,18 +20,37 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('stock', NumberType::class)
-            ->add('priceTtc', MoneyType::class)
-            ->add('type', TextType::class)
-            ->add('gender', TextType::class)
+            ->add('title', TextType::class, [
+                'label' => 'Titre'
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description'
+            ])
+            ->add('stock', NumberType::class, [
+                'label' => 'Nombre de stock'
+            ])
+            ->add('priceTtc', MoneyType::class, [
+                'label' => 'Prix (TTC)'
+            ])
+            ->add('type', TextType::class, [
+                'label' => 'Type de vehicule'
+            ])
+            ->add('gender', TextType::class, [
+                'label' => 'Genre'
+            ])
             ->add('brand', EntityType::class, [
+                'label' => 'Marque',
                 'class' => Vendor::class,
                 // uses the User.username property as the visible option string
                 'choice_label' => 'name',
             ])
-            ->add('imageFile', FileType::class)
+            ->add('imageFile', FileType::class, [
+                'label' => 'Photo de vehicule',
+                'required' => false,
+                // 'attr' => [
+                //     'required' => false
+                // ]
+            ])
         ;
     }
 

@@ -1,13 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/admin-layout.html.twig' %}
 
-{% block title %}Edit Vendor{% endblock %}
+{% block title %}Fournisseurs{% endblock %}
+
+{% set actions = [
+    {'path': 'app_vendor_index', 'label': 'Liste des fournisseurs', 'iconClass': 'bi bi-list'},
+    {'path': 'app_vendor_delete', 'label': 'Supprimer', 'iconClass': 'bi bi-trash', 'variables': vendor.id },
+] %}
 
 {% block body %}
-    <h1>Edit Vendor</h1>
+    <div>
+        <h1>Modification de fournisseur</h1>
+        
+        {{ include("shared/page-actions.html.twig", { actions: actions }) }}
 
-    {{ include('vendor/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_vendor_index') }}">back to list</a>
-
-    {{ include('vendor/_delete_form.html.twig') }}
+        <div class="p-4 bg-white">
+            {{ include('vendor/_form.html.twig', {
+                'button_label': 'Mettre à jour', 
+                'button_class': 'btn btn-outline-success'
+            }) }}
+        </div>
+    </div>
 {% endblock %}

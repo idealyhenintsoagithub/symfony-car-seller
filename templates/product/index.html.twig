@@ -13,11 +13,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Titre</th>
                     <th>Description</th>
-                    <th>Stock</th>
-                    <th>PriceTtc</th>
+                    <th>Nombre de stock</th>
+                    <th>Prix (TTC)</th>
                     <th>Type</th>
                     <th>Marque</th>
                     <th>Genre</th>
@@ -27,7 +26,6 @@
             <tbody>
             {% for product in products %}
                 <tr>
-                    <td>{{ product.id }}</td>
                     <td>{{ product.title }}</td>
                     <td>{{ product.description }}</td>
                     <td>{{ product.stock }}</td>

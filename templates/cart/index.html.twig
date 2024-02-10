@@ -4,6 +4,9 @@
 
 {% block body %}
     <div class="container">
+        <div class="row mt-4">
+            <h1>Fiche produit</h1>
+        </div>
         {{ form_start(form) }}
             <div class="row">
                     <div class="col-sm-8 order-container">
@@ -44,6 +47,10 @@
                                 </div>
                             </div>
                         {% endfor %}
+                    {% else %}
+                        <div class="text-center">
+                            <h3>Pannier vide</h3>
+                        </div>
                     {% endif %}
                 </div>
                 <div class="col-sm-4 cart-detail-container">

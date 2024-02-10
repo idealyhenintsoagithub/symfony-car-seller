@@ -14,8 +14,12 @@ class VendorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('imageFile', FileType::class)
+            ->add('name', TextType::class, [
+                'label' => 'Nom du fournisseur'
+            ])
+            ->add('imageFile', FileType::class, [
+                'label' => 'Logo du fournisseur'
+            ])
         ;
     }
 

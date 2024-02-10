@@ -20,15 +20,12 @@
     <h1>Detail du produit</h1>
 
     {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+
     <div class="custom-page-content p-2">
         <table class="table">
             <tbody>
                 <tr>
-                    <th>Id</th>
-                    <td>{{ product.id }}</td>
-                </tr>
-                <tr>
-                    <th>Title</th>
+                    <th>Titre</th>
                     <td>{{ product.title }}</td>
                 </tr>
                 <tr>
@@ -36,11 +33,11 @@
                     <td>{{ product.description }}</td>
                 </tr>
                 <tr>
-                    <th>Stock</th>
+                    <th>Nombre en stock</th>
                     <td>{{ product.stock }}</td>
                 </tr>
                 <tr>
-                    <th>PriceTtc</th>
+                    <th>Prix(TTC)</th>
                     <td>{{ product.priceTtc }}</td>
                 </tr>
                 <tr>
@@ -48,13 +45,10 @@
                     <td>{{ product.type }}</td>
                 </tr>
                 <tr>
-                    <th>Gender</th>
+                    <th>Genre</th>
                     <td>{{ product.gender }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
-
-    {{ include('product/_delete_form.html.twig') }}
 {% endblock %}

@@ -2,39 +2,69 @@
 
 {% block title %}Fournisseurs{% endblock %}
 
+{% set actions = [
+    {'path': 'app_vendor_new', 'label': 'Crée un fournisseur', 'iconClass': 'bi bi-plus-lg'},
+] %}
+
 {% block body %}
-    <h1>Fournisseurs</h1>
-    <div class="custom-page-content p-2">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Logo</th>
-                    <th>Nom</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for vendor in vendors %}
-                <tr>
-                    <td>
-                        <img 
-                          src={{ asset("/images/vendors/" ~ vendor.logo) }} 
-                          alt={{ vendor.logo }}
-                          width="50"
-                        >
-                    </td>
-                    <td>{{ vendor.name }}</td>
-                    <td>
-                        <a href="{{ path('app_vendor_show', {'id': vendor.id}) }}">show</a>
-                        <a href="{{ path('app_vendor_edit', {'id': vendor.id}) }}">edit</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="3">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>  
+    <div>
+        <h1>Fournisseurs</h1>
+        
+        {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+        
+        <div class="custom-page-content p-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Nom</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for vendor in vendors %}
+                    <tr>
+                        <td>
+                            <img 
+                            src={{ asset("/images/vendors/" ~ vendor.logo) }} 
+                            alt={{ vendor.logo }}
+                            width="50"
+                            >
+                        </td>
+                        <td>{{ vendor.name }}</td>
+                        <td>
+                            {%
+                                set tableActions = [
+                                    {
+                                        'path': 'app_vendor_show',
+                                        'label': 'Voire',
+                                        'iconClass': 'bi bi-eye',
+                                        'variables': vendor.id
+                                    },
+                                    {
+                                        'path': 'app_vendor_edit',
+                                        'label': 'Modifier',
+                                        'iconClass': 'bi bi-pencil',
+                                        'variables': vendor.id
+                                    },
+                                    {
+                                        'path': 'app_vendor_delete',
+                                        'label': 'Supprimer',
+                                        'iconClass': 'bi bi-trash',
+                                        'variables': vendor.id
+                                    },
+                                ]
+                            %}
+                            {{ include("/shared/table-actions.html.twig", { actions: tableActions }) }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>  
+    </div>
 {% endblock %}

@@ -55,11 +55,6 @@ class Product
     private $gender;
 
     /**
-     * @ORM\OneToOne(targetEntity=Vendor::class, cascade={"persist", "remove"})
-     */
-    private $brand;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
@@ -68,6 +63,11 @@ class Product
      * @Vich\UploadableField(mapping="products", fileNameProperty="image")
      */
     private $imageFile = null;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Vendor::class, inversedBy="products")
+     */
+    private $brand;
 
     public function getId(): ?int
     {
@@ -146,18 +146,6 @@ class Product
         return $this;
     }
 
-    public function getBrand(): ?Vendor
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?Vendor $brand): self
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
@@ -193,5 +181,17 @@ class Product
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+    public function getBrand(): ?Vendor
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Vendor $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
     }
 }

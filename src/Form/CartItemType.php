@@ -14,7 +14,6 @@ class CartItemType extends AbstractType
     {
         $builder
             ->add('quantity', NumberType::class, [
-                'label' => 'Quantiter',
                 'attr' => [
                     'class' => 'form-control mr-2'
                 ]
