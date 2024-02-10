@@ -4,10 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\Vendor;
+use App\Entity\OrderItem;
+use App\Form\AddToCartType;
+use App\Manager\CartManager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -29,12 +33,34 @@ class HomeController extends AbstractController
     /**
      * @Route("/details/{id}", name="product_detail")
      */
-    public function productDetail($id, EntityManagerInterface $entityMananger): Response
+    public function productDetail(
+        Product $product, 
+        EntityManagerInterface $entityMananger,
+        Request $request,
+        CartManager $cartManager 
+    ): Response
     {
-        $product = $entityMananger->getRepository(Product::class)->findOneBy(["id" => $id]);
+        
+        $form = $this->createForm(AddToCartType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $orderItem = $form->getData();
+            $orderItem->setProduct($product);
+
+            $cart = $cartManager->getCurrentCart();
+            $cart
+                ->addOrderItem($orderItem)
+                ->setUpdatedAt(new \DateTimeImmutable());
+
+            $cartManager->save($cart);
+
+            return $this->redirectToRoute('product_detail', ['id' => $product->getId()]);
+        }
 
         return $this->render('home/details.html.twig', [
-            'product' => $product
+            'product' => $product,
+            'form' => $form->createView()
         ]);
     }
 }

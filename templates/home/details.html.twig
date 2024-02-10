@@ -15,9 +15,20 @@
       </div>
       <div>{{ product.description }}</div>
       <div class="d-flex py-2">
-        <button type="button" class="btn btn-light">
+        {# <button type="button" class="btn btn-lg btn-success">
           Ajouter dans le panier
-        </button>
+        </button> #}
+        {{ form_start(form) }}
+          <div class="container d-flex justify-content-between">
+            <div>
+              {{ form_widget(form.quantity, { 'attr': { 'class': 'form-control', 'style': 'height=40px'}}) }}
+              {{ form_errors(form.quantity) }}
+            </div>
+            <div>
+              {{ form_widget(form.add, { 'attr': { 'class': 'btn btn-success btn-lg ml-2' }}) }}
+            </div>
+          </div>
+        {{ form_end(form) }}
       </div>
     </div>
   </div>
