@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail du produit{% endblock %}
+
+{% block body %}
+  <div class="container mt-5 d-flex justify-content-between align-items-center">
+    <div>
+      <img 
+        src={{ asset("images/products/" ~ product.image ) }} 
+        alt={{ product.image }} 
+        width="500"
+        style="border-radius: 8px;"
+      >
+    </div>
+    <div class="product-item m-4">
+      <h2>{{ product.title }}</h2>
+      <div class="fw-bold py-2">
+        <i class="bi bi-currency-dollar"></i>
+        {{ product.priceTtc }}
+      </div>
+      <div>{{ product.description }}</div>
+      <div class="d-flex py-2">
+        {{ form_start(form) }}
+          <div class="d-flex mt-4">
+            <div>
+              {{ form_widget(form.quantity, { 'attr': { 'class': 'form-control w-50', 'style': 'height=40px'}}) }}
+              {{ form_errors(form.quantity) }}
+            </div>
+            <div class="ml-2">
+              {{ form_widget(form.add, { 'attr': { 'class': 'btn btn-success' }}) }}
+            </div>
+          </div>
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <h5 class="text-center">Autre produits</h5>
+    <div class="container">
+      <div class="row">
+      {% if relativeProducts %}
+        {% for product in relativeProducts %}
+          {{ include("home/product-item.html.twig", { product: product }) }}
+        {% endfor %}
+      {% else %}
+        <h5 class="text-center">Aucune produits relative</h5>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

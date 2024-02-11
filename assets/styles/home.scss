@@ -25,26 +25,19 @@
       color: $default-font-color;
     }
   }
+}
 
-  .product-list-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    .product-item {
-      text-align: center;
-      width: 45%;
-      margin: 16px;
-      a {
-        color: $default-font-color;
-        text-decoration: none;
-        font-weight: bold;
-        .car-image {
-          padding-bottom: 8px;
-        }
-      }
-      &:hover {
-        box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
-      }
+.product-item {
+  a {
+    color: $default-font-color;
+    text-decoration: none;
+    font-weight: bold;
+    .car-image {
+      padding-bottom: 8px;
+      object-fit: contain
     }
+  }
+  .product-item-content:hover {
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
   }
 }

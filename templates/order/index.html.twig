@@ -1,0 +1,40 @@
+{% extends 'admin/admin-layout.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Commande valider</h1>
+        <div class="custom-page-content bg-white p-2 mt-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Numero</th>
+                        <th scope="col" class="text-center">Date du commande</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Email client</th>
+                        <th scope="col">Cout totale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <a href="{{ path('app_order_details', { 'id': order.id }) }}">
+                                    {{ order.id }}
+                                </a>
+                            </th>
+                            <td class="text-center">{{ order.createdAt|date("d/m/Y")}}</td>
+                            <td>{{ order.client.firstName ~ " " ~ order.client.lastName }}</td>
+                            <td>{{ order.client.email }}</td>
+                            <td class="text-center">
+                                {{ order.getTotal }}
+                                <i class="bi bi-currency-dollar"></i>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

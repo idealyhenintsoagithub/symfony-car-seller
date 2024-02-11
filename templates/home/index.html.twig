@@ -10,11 +10,13 @@
         </div>
     </div>
     <div class="container product-page">
-        <div class="product-title pt-4">
-            <h4>Acheter votre voiture en ligne</h4>
+        <div class="pt-4">
+            <h4 class="text-center">Acheter votre voiture en ligne</h4>
         </div>
+        
         {{ include('home/car-brand.html.twig') }}
-        <div class="product-list-container">
+
+        <div class="row product-list-container">
             {% for product in products %}
                 {{ include('home/product-item.html.twig', { product: product }) }}
             {% endfor %}

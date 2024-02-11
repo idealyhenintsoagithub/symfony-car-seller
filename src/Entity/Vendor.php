@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\File\File;
 
 
 /**
+ * Fournisseur
+ * 
  * @ApiResource()
  * @Vich\Uploadable
  * @ORM\Entity(repositoryClass=VendorRepository::class)

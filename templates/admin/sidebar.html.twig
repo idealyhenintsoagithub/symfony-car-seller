@@ -20,6 +20,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link fw-bold" href={{ path("app_admin") }} >
+              <i class="bi bi-pie-chart-fill"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link fw-bold" href={{ path("app_product_index") }} >
               <i class="bi bi-cart-fill"></i>
               Produits
@@ -32,7 +38,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-bold" href="#">
+            <a class="nav-link fw-bold" href="{{ path('app_order') }}">
               <i class="bi bi-cart-plus-fill"></i>
               Commande
             </a>

@@ -1,12 +1,22 @@
-<div class="product-item">
-  <a href={{ path("product_detail", { id: product.id }) }}>
-    <img src={{ asset(product.image ? "images/products/" ~ product.image : "images/rover.jpg") }} width="100%" height="auto" class="car-image">
-    <div class="p-4 d-flex justify-content-between">
-      <div>{{ product.title }}</div>
-      <div>
-        <i class="bi bi-currency-dollar"></i>
-        {{ product.priceTtc }} / Unit
-      </div>  
-    </div>
-  </a>
+
+<div class="col-sm-3 product-item mb-4">
+  <div class="product-item-content">
+    <a href={{ path("product_detail", { id: product.id }) }} class="text-decoration-none">
+      <img 
+        class="p-0" 
+        src={{ asset(product.image ? "images/products/" ~ product.image : "images/rover.jpg") }} 
+        width="100%" 
+        height="200" 
+        class="car-image"
+        style="object-fit: contain;"
+      >
+      <div class="d-flex justify-content-between p-4">
+        <div>{{ product.title }}</div>
+        <div>
+          <i class="bi bi-currency-dollar"></i>
+          {{ product.priceTtc }} / Unit
+        </div>  
+      </div>
+    </a>
+  </div>
 </div>

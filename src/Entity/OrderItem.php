@@ -18,10 +18,10 @@ class OrderItem
      */
     private $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Product::class)
-     */
-    private $product;
+    // /**
+    //  * @ORM\OneToOne(targetEntity=Product::class)
+    //  */
+    // private $product;
 
     /**
      * @ORM\Column(type="integer")
@@ -35,22 +35,27 @@ class OrderItem
      */
     private $cart;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class)
+     */
+    private $product;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getProduct(): ?Product
-    {
-        return $this->product;
-    }
+    // public function getProduct(): ?Product
+    // {
+    //     return $this->product;
+    // }
 
-    public function setProduct(?Product $product): self
-    {
-        $this->product = $product;
+    // public function setProduct(?Product $product): self
+    // {
+    //     $this->product = $product;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getQuantity(): ?int
     {
@@ -85,7 +90,7 @@ class OrderItem
      */
     public function equals(OrderItem $orderItem): bool
     {
-        return $this->getProduct()->getId() === $orderItem->getProduct()->getId();
+        return $this->getProduct()->getId() == $orderItem->getProduct()->getId();
     }
 
     /**
@@ -94,5 +99,17 @@ class OrderItem
     public function getTotal(): float
     {
         return $this->getProduct()->getPriceTtc() * $this->getQuantity();
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
+
+        return $this;
     }
 }

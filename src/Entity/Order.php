@@ -15,6 +15,8 @@ class Order
 {
     const STATUS_CART = 'cart';
 
+    const STATUS_CART_VALIDATE = "cart_validate";
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -41,6 +43,11 @@ class Order
      * @ORM\Column(type="string", length=255)
      */
     private $status = self::STATUS_CART;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="orders", cascade={"persist"})
+     */
+    private $client;
 
     public function __construct()
     {
@@ -69,6 +76,7 @@ class Order
                 $existOrderItem->setQuantity(
                     $existOrderItem->getQuantity() + $orderItem->getQuantity()
                 );
+
                 return $this;
             }
         }
@@ -152,6 +160,18 @@ class Order
         foreach ($this->getOrderItems() as $orderItem) {
             $this->removeOrderItem($orderItem);
         }
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }

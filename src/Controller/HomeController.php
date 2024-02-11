@@ -7,6 +7,7 @@ use App\Entity\Vendor;
 use App\Entity\OrderItem;
 use App\Form\AddToCartType;
 use App\Manager\CartManager;
+use App\Repository\ProductRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,12 +38,14 @@ class HomeController extends AbstractController
         Product $product, 
         EntityManagerInterface $entityMananger,
         Request $request,
-        CartManager $cartManager 
+        CartManager $cartManager,
+        ProductRepository $productRepository
     ): Response
     {
         
         $form = $this->createForm(AddToCartType::class);
         $form->handleRequest($request);
+        $relativeProducts = $productRepository->getRelativeProducts($product);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $orderItem = $form->getData();
@@ -58,9 +61,10 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('product_detail', ['id' => $product->getId()]);
         }
 
-        return $this->render('home/details.html.twig', [
+        return $this->render('home/product-details.html.twig', [
             'product' => $product,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'relativeProducts' => $relativeProducts
         ]);
     }
 }

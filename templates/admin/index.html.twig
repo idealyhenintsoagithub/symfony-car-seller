@@ -2,5 +2,34 @@
 
 {% block title %}Admin!{% endblock %}
 
+{% set orderAccountData = [20, 30, 90, 40] %}
+{% set orderAccountLabel = [2010, 2011, 2012, 2013] %}
+
 {% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 p-0 mb-4">
+        <div class="custom-page-content h-100">
+          <canvas 
+            id="orderAccount"
+            data-order-account-data="{{ orderAccountData|serialize(format = 'json') }}"
+            data-order-account-label="{{ orderAccountLabel|serialize(format = 'json') }}"
+          ></canvas>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3 d-flex justify-content-between">
+        <div class="custom-page-content h-100 p-4 d-flex justify-content-between flex-column w-100">
+          <div>
+            <h6>Commande total</h6>
+          </div>
+          <div>
+            <h4>67.9K</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="custom-page-content col-sm-12"><canvas id="bar"></canvas></div>
+    </div>
+  </div>
 {% endblock %}

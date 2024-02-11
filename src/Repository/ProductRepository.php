@@ -39,6 +39,20 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+    public function getRelativeProducts(Product $product): array
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.brand', 'brand')
+            ->andWhere('brand = :brand')
+            ->andWhere('p != :currentProduct')
+            ->setParameter('brand', $product->getBrand())
+            ->setParameter('currentProduct', $product)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+       ;
+    }
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */

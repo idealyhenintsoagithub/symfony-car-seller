@@ -1,0 +1,49 @@
+{% extends 'admin/admin-layout.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+  <div>
+    <h1>
+      Detail du commande N°: <b>{{ order.id }}</b>
+    </h1>
+    <div class="custom-page-content p-2 bg-white mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Produis</th>
+                    <th scope="col" class="text-center">Quantiter</th>
+                    <th scope="col" class="text-center">Prix unitaire</th>
+                    <th scope="col" class="text-center">Prix totale</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for orderItem in order.orderItems %}
+                    <tr>
+                        <th scope="row">
+                            {{ orderItem.product.title }}
+                        </th>
+                        <td class="text-center">{{ orderItem.quantity }}</td>
+                        <td class="text-center">
+                          {{ orderItem.product.priceTtc }}
+                          <i class="bi bi-currency-dollar"></i>
+                        </td>
+                        <td class="text-center">
+                          {{ orderItem.getTotal }}
+                          <i class="bi bi-currency-dollar"></i>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                  <th colspan="2">Prix totale</th>
+                  <th></th>
+                  <th class="text-center">
+                    {{ order.getTotal }}
+                    <i class="bi bi-currency-dollar"></i>
+                  </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+{% endblock %}
