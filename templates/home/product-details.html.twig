@@ -23,7 +23,7 @@
         {{ form_start(form) }}
           <div class="d-flex mt-4">
             <div>
-              {{ form_widget(form.quantity, { 'attr': { 'class': 'form-control w-50', 'style': 'height=40px'}}) }}
+              {{ form_widget(form.quantity, { 'attr': { 'class': 'form-control', 'max': product.stock}}) }}
               {{ form_errors(form.quantity) }}
             </div>
             <div class="ml-2">

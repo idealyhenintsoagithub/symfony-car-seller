@@ -16,7 +16,12 @@
     <body>
         <div class="container-fluid">
             {{ include('layout/navbar.html.twig') }}
-            {% block body %}{% endblock %}
+
+            <div class="h-100" style="min-height: 100vh;">
+                {% block body %}{% endblock %}
+            </div>
+
+            {{ include('layout/footer.html.twig') }}
         </div>
     </body>
 </html>

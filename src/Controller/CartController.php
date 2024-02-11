@@ -8,6 +8,7 @@ use App\Form\ClientClientType;
 use App\Manager\CartManager;
 use App\Entity\Order;
 use App\Form\CartType;
+use App\Manager\StockManager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,7 +46,12 @@ class CartController extends AbstractController
     /**
      * @Route("/validate-cart", name="app_validate_cart")
      */
-    public function validateCarte(Request $request, EntityManagerInterface $em, CartManager $cartManager)
+    public function validateCarte(
+        Request $request, 
+        EntityManagerInterface $em, 
+        CartManager $cartManager,
+        StockManager $stockManager
+    )
     {
         $user = $this->getUser();
         $client = new Client();
@@ -62,6 +68,8 @@ class CartController extends AbstractController
             $cart->setClient($client);
             $cart->setStatus(Order::STATUS_CART_VALIDATE);
 
+            $stockManager->process($cart);
+            
             $em->flush();
             return $this->redirectToRoute('app_cart', [
                 'message' => 'Votre commande est enregistrée',

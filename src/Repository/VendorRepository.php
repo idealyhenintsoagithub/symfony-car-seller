@@ -38,7 +38,6 @@ class VendorRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
 //    /**
 //     * @return Vendor[] Returns an array of Vendor objects
 //     */

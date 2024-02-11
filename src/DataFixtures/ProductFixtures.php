@@ -46,7 +46,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
           "description" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos officiis delectus nostrum, excepturi",
           "vendor" => "hyundai",
           "image" => "hyundai_i10.webp",
-          "priceTtc" => 43000,
+          "priceTtc" => 43600,
         ],
         [
           "title" => "Honda",
@@ -56,7 +56,43 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
           "priceTtc" => 25000,
           "vendor" => "honda",
           "image" => "honda_civic.jpg"
-        ]
+        ],
+        [
+          "title" => "peugeot 106",
+          "gender" => "plaisir",
+          "type" => "sedan",
+          "description" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos officiis delectus nostrum, excepturi",
+          "priceTtc" => 25300,
+          "vendor" => "peugeot",
+          "image" => "peugeot_106.webp"
+        ],
+        [
+          "title" => "peugeot 206",
+          "gender" => "plaisir",
+          "type" => "sedan",
+          "description" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos officiis delectus nostrum, excepturi",
+          "priceTtc" => 35300,
+          "vendor" => "peugeot",
+          "image" => "peugeot_206.jpg"
+        ],
+        [
+          "title" => "Hyundai elantra",
+          "gender" => "plaisir",
+          "type" => "sedan",
+          "description" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos officiis delectus nostrum, excepturi",
+          "priceTtc" => 105300,
+          "vendor" => "hyundai",
+          "image" => "hyundai_elantra.jpg"
+        ],
+        [
+          "title" => "peugeot 306",
+          "gender" => "plaisir",
+          "type" => "sedan",
+          "description" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos officiis delectus nostrum, excepturi",
+          "priceTtc" => 30300,
+          "vendor" => "peugeot",
+          "image" => "peugeot_306.jpg"
+        ],
     ];
 
 

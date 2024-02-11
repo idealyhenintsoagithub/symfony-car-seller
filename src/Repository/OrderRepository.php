@@ -60,6 +60,21 @@ class OrderRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getTotalOrder()
+    {
+        return $this->createQueryBuilder('o')
+            ->join('o.orderItems', 'orderItems')
+            ->join('orderItems.product', 'product')
+            ->where('o.status = :status')
+            ->setParameters([
+                'status' => Order::STATUS_CART_VALIDATE
+            ])
+            ->groupBy('product.brand')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Order[] Returns an array of Order objects
 //     */

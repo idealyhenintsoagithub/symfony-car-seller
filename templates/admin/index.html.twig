@@ -9,27 +9,37 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 p-0 mb-4">
-        <div class="custom-page-content h-100">
-          <canvas 
-            id="orderAccount"
-            data-order-account-data="{{ orderAccountData|serialize(format = 'json') }}"
-            data-order-account-label="{{ orderAccountLabel|serialize(format = 'json') }}"
-          ></canvas>
-        </div>
-      </div>
-      <div class="col-sm-6 mb-3 d-flex justify-content-between">
-        <div class="custom-page-content h-100 p-4 d-flex justify-content-between flex-column w-100">
-          <div>
-            <h6>Commande total</h6>
+        <div class="custom-page-content d-flex justify-content-between align-items-center">
+          <div class="w-100 p-4 d-flex justify-content-between flex-column">
+            <div><h6>Nombre d'utilisateurs</h6></div>
+            <div><h4>{{ userTotal }}</h4></div>
           </div>
           <div>
-            <h4>67.9K</h4>
+            <i class="bi bi-person-circle fs-1 p-5"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3">
+        <div class="custom-page-content d-flex justify-content-between">
+          <div class="h-100 p-4 d-flex justify-content-between flex-column w-100">
+            <div>
+              <h6>Commande total</h6>
+            </div>
+            <div></div>
+            <div>
+              <h4>{{ totalOrderValues }}K</h4>
+            </div>
+          </div>
+          <div >
+            <canvas width="100" id="totalOrder"></canvas>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="custom-page-content col-sm-12"><canvas id="bar"></canvas></div>
+      <div class="custom-page-content col-sm-12">
+        <canvas id="productPerVendor" data-data="{{ productPerVendor|serialize(format = 'json') }}"></canvas>
+      </div>
     </div>
   </div>
 {% endblock %}

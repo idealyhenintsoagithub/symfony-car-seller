@@ -7,15 +7,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class CartItemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('quantity', NumberType::class, [
+            ->add('quantity', IntegerType::class, [
                 'attr' => [
-                    'class' => 'form-control mr-2'
+                    'class' => 'form-control mr-2',
+                    'min' => 1
                 ]
             ])
             ->add('remove', SubmitType::class, [

@@ -46,8 +46,6 @@
                     </td>
                     <td>{{ product.gender }}</td>
                     <td>
-                        {# <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                        <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
                         {{ include("product/actions.html.twig", { product: product }) }}
                     </td>
                 </tr>

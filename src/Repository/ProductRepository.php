@@ -53,6 +53,19 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
        ;
     }
+
+    public function getProductPerVendor(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('brand.name vendor, COUNT(p) productNumber')
+            ->join('p.brand', 'brand')
+            ->groupBy('brand')
+            ->orderBy('p.createdAt', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */
