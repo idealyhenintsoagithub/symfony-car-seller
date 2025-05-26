@@ -1,28 +1,28 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href={{ path('app_home') }}>Shopper</a>
+    <a class="navbar-brand" href={{ path('app_home') }}>
+      {{ 'home.title.pageName'|trans }}
+    </a>
     <ul class="navbar-nav col-lg-6">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Acceuil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href={{ path("app_admin") }}>Admin</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a 
-          class="nav-link dropdown-toggle" 
-          href="#" 
-          data-bs-toggle="dropdown" 
-          aria-expanded="false"
+        <a
+          class="nav-link active supplier-navlink"
+          aria-current="page"
+          role="button"
         >
-          Fournisseurs
+          {{ 'navbar.supplier'|trans }}
         </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
       </li>
+      {% if is_granted("ROLE_SUPER_ADMIN") %}
+        <li class="nav-item">
+          <a class="nav-link" href={{ path("app_admin") }}>
+            {{ 'navbar.admin'|trans }}
+          </a>
+        </li>
+      {% endif %}
     </ul>
     <div class="d-lg-flex col-lg-3 justify-content-lg-end">
       <div class="m-2">
@@ -74,3 +74,22 @@
     </div>
   </div>
 </nav>
+<div class="p-2" id="supplier-menu">
+  <div class="d-flex">
+    {% for supplier in suppliers %}
+      <div class="p-4">
+        <a href="{{ url('products_by_category', {'categoryName': supplier.name}) }}">
+          <img
+            src="{{ asset('images/vendors/' ~ supplier.logo) }}"
+            alt="{{ supplier.name }}"
+            class="rounded float-start img-fluid"
+            style="width: 50px; height: 50px;"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-title="{{ supplier.name }}"
+          >
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>

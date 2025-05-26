@@ -5,6 +5,29 @@ body {
 }
 
 .custom-page-content {
-  box-shadow: $box-shadow;
+  // box-shadow: $box-shadow;
   background-color: $custom-page-content-bg;
+}
+
+.navbar-nav {
+  .nav-item {
+    &.active {
+      background: #ffc107;
+      border-radius: 8px;
+      font-size: 20px;
+    }
+  }
+}
+
+table.table {
+  tbody {
+    td.table-wrap {
+      div {
+        width: inherit;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
 }

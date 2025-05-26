@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-vertical navbar-expand-xl col-sm-3 justify-content-center align-items-start">
+<nav class="navbar navbar-light navbar-vertical navbar-expand-xl col-sm-2 justify-content-center align-items-start">
   <div>
     <div class="d-flex align-items-start">
       <div class="toggle-icon-wrapper">
@@ -13,37 +13,37 @@
     <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
       <div class="navbar-vertical-content scrollbar">
         <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
-          <li class="nav-item">
+          <li class="nav-item {{ app.request.get('_route') == 'app_home' ? 'active' : '' }}">
             <a class="nav-link fw-bold" href={{ path("app_home") }} >
               <i class="bi bi-house-door-fill"></i>
               Acceuil
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ app.request.get('_route') == 'app_admin' ? 'active' : '' }}">
             <a class="nav-link fw-bold" href={{ path("app_admin") }} >
               <i class="bi bi-pie-chart-fill"></i>
               Dashboard
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ app.request.get('_route') == 'app_product_index' ? 'active' : '' }}">
             <a class="nav-link fw-bold" href={{ path("app_product_index") }} >
               <i class="bi bi-cart-fill"></i>
               Produits
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ app.request.get('_route') == 'app_stock_management' ? 'active' : '' }}">
             <a class="nav-link fw-bold" href={{ path("app_stock_management") }} >
               <i class="bi bi-cart-fill"></i>
               Stock
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ app.request.get('_route') == 'app_vendor_index' ? 'active' : '' }}">
             <a class="nav-link fw-bold" href={{ path("app_vendor_index") }} >
               <i class="bi bi-cone"></i>
               Fournisseurs
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ app.request.get('_route') == 'app_order' ? 'active' : '' }}">
             <a class="nav-link fw-bold" href="{{ path('app_order') }}">
               <i class="bi bi-cart-plus-fill"></i>
               Commande

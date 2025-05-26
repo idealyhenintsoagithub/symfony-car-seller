@@ -8,7 +8,7 @@ use App\Entity\OrderItem;
 use App\Form\AddToCartType;
 use App\Manager\CartManager;
 use App\Repository\ProductRepository;
-
+use App\Repository\VendorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,6 +65,24 @@ class HomeController extends AbstractController
             'product' => $product,
             'form' => $form->createView(),
             'relativeProducts' => $relativeProducts
+        ]);
+    }
+
+    /**
+     * @Route("/producs/{categoryName}", name="products_by_category")
+     */
+    public function productsByCategory(
+        string $categoryName,
+        ProductRepository $productRepository,
+        VendorRepository $vendorRepository
+    )
+    {
+        $vendor = $vendorRepository->findOneByName($categoryName);
+        $products = $productRepository->findByBrand($vendor);
+
+        return $this->render('home/product-per-category.html.twig', [
+            'categoryName' => $categoryName,
+            'products' => $products,
         ]);
     }
 }

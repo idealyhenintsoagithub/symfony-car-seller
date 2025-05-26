@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% trans_default_domain 'messages' %}
+
 {% block title %}Product page{% endblock %}
 
 {% block body %}
     <div id="bannier">
         <img src="{{ asset('images/rover.jpg') }}" alt="Symfony!"/>
         <div class="presentation-text">
-            <h2>Buy your dream car</h2>
+            <h2>{{ 'home.title.pageTitle'|trans }}</h2>
         </div>
     </div>
     <div class="container product-page">
         <div class="pt-4">
-            <h4 class="text-center">Acheter votre voiture en ligne</h4>
+            <h4 class="text-center">
+                {{ 'home.label.buyOnline'|trans }}
+            </h4>
         </div>
         
         {{ include('home/car-brand.html.twig') }}

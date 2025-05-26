@@ -9,5 +9,16 @@
 import 'bootstrap/scss/bootstrap.scss';
 import 'bootstrap-icons/font/bootstrap-icons.scss';
 import './styles/app.scss';
+import '@popperjs/core';
+import * as bootstrap from 'bootstrap';
 
-import 'bootstrap/dist/js/bootstrap.bundle';
+window.bootstrap = bootstrap;
+
+$(function() {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+  $('.supplier-navlink').on('click', function (event) {
+    $('#supplier-menu').toggleClass('d-none');
+  });
+});

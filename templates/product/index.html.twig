@@ -6,32 +6,49 @@
     {'path': 'app_product_new', 'label': 'Crée une produit', 'iconClass': 'bi bi-plus-lg'},
 ] %}
 
+{% set titleStyle = { width: '15%' } %}
+{% set descriptionStyle = { width: '15%' } %}
+{% set stockStyle = { width: '15%' } %}
+{% set priceStyle = { width: '15%' } %}
+{% set typeStyle = { width: '15%' } %}
+{% set brandStyle = { width: '15%' } %}
+{% set genderStyle = { width: '15%' } %}
+{% set actionsStyle = { width: '15%' } %}
+
 {% block body %}
     <h1>Listes des products</h1>
     {{ include("shared/page-actions.html.twig", { actions: actions }) }}
     <div class="custom-page-content p-2">
-        <table class="table">
+        <table class="table table-hover" style="width: 100%;">
             <thead>
                 <tr>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Nombre de stock</th>
-                    <th>Prix (TTC)</th>
-                    <th>Type</th>
-                    <th>Marque</th>
-                    <th>Genre</th>
-                    <th>actions</th>
+                    <th style="width: 10%;">Titre</th>
+                    <th style="width: 15%;">Description</th>
+                    <th style="width: 15%;">Nbr stock</th>
+                    <th style="width: 10%;">Prix (TTC)</th>
+                    <th style="width: 15%;">Type</th>
+                    <th style="width: 15%;">Marque</th>
+                    <th style="width: 10%;">Genre</th>
+                    <th style="width: 10%;">actions</th>
                 </tr>
             </thead>
             <tbody>
             {% for product in products %}
                 <tr>
-                    <td>{{ product.title }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.stock }}</td>
-                    <td>{{ product.priceTtc }}</td>
-                    <td>{{ product.type }}</td>
-                    <td>
+                    <td style="width: 10%; white-space: nowrap;" >{{ product.title }}</td>
+                    <td class="table-wrap" style="width: 200px;">
+                      <div
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        data-bs-title="{{ product.description }}"
+                      >
+                        {{ product.description }}
+                      </div>
+                    </td>
+                    <td style="width: 15%;" class="text-right">{{ product.stock }}</td>
+                    <td style="width: 10%;" class="text-right">{{ product.priceTtc }}</td>
+                    <td style="width: 15%;">{{ product.type }}</td>
+                    <td style="width: 15%;">
                         {% if product.brand.logo is defined %}
                             <a href="{{ path('app_vendor_show', {'id': product.brand.id }) }}">
                                 {{
@@ -44,8 +61,8 @@
                             -
                         {% endif %}
                     </td>
-                    <td>{{ product.gender }}</td>
-                    <td>
+                    <td style="width: 10%;">{{ product.gender }}</td>
+                    <td style="width: 10%;">
                         {{ include("product/actions.html.twig", { product: product }) }}
                     </td>
                 </tr>

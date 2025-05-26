@@ -1,0 +1,14 @@
+navbar:
+  supplier: Fournisseurs
+  admin: Admin
+
+common:
+  stockEmpty: Stock epuisé
+
+home:
+  title:
+    pageName: "Cars-seller"
+    pageTitle: "Achétez vôtre voiture de rêve"
+  label:
+    buyOnline: "Achétez vôtre voiture facilement en ligne"
+    findYourGame: "Trouvez votre game parmis nos fournisseurs"

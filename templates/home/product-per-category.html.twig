@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products category{% endblock %}
+
+{% block body %}
+  <h3 class="text-center py-5 text-uppercase">{{ categoryName }}</h3>
+  <div class="container overflow-hidden">
+    <div class="row g-5">
+      {% for product in products %}
+        {{ include('home/product-item.html.twig', { product: product }) }}
+      {% endfor %}
+      {% if products|length < 1 %}
+        <h4 class="text-center">
+          {{ 'common.stockEmpty'|trans }}
+        </h4>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
