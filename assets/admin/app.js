@@ -42,9 +42,9 @@ const chart = new Chart(
       datasets: [
         {
           backgroundColor: ['#ff00006e', '#00ff006e', '#ffc1076e', '#0000ff6e'],
-          borderWidth: 1,
+          borderWidth: 2,
           borderColor: ['#ff0000ff', '#00ff00ff', '#ffc107ff', '#0000ffff'],
-          label: undefined,
+          // label: 'Nombre des voitures',
           data: data
         }
       ]

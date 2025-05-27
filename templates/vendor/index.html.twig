@@ -13,7 +13,7 @@
         {{ include("shared/page-actions.html.twig", { actions: actions }) }}
         
         <div class="custom-page-content p-2">
-            <table class="table">
+            <table class="table table-hover table-sm align-middle">
                 <thead>
                     <tr>
                         <th>Logo</th>
@@ -26,9 +26,9 @@
                     <tr>
                         <td>
                             <img 
-                            src={{ asset("/images/vendors/" ~ vendor.logo) }} 
-                            alt={{ vendor.logo }}
-                            width="50"
+                              src={{ asset("/images/vendors/" ~ vendor.logo) }} 
+                              alt={{ vendor.logo }}
+                              style="height: 30px;"
                             >
                         </td>
                         <td>{{ vendor.name }}</td>

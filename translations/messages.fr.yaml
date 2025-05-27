@@ -1,5 +1,6 @@
 navbar:
   supplier: Fournisseurs
+  models: Modeles
   admin: Admin
 
 common:

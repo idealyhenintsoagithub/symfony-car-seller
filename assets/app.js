@@ -20,5 +20,11 @@ $(function() {
 
   $('.supplier-navlink').on('click', function (event) {
     $('#supplier-menu').toggleClass('d-none');
+    $('#models-menu').addClass('d-none');
+  });
+
+  $('.models-navlink').on('click', function (event) {
+    $('#models-menu').toggleClass('d-none');
+    $('#supplier-menu').addClass('d-none');
   });
 });

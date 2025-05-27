@@ -3,55 +3,55 @@
 {% block title %}Gestion des stock{% endblock %}
 
 {% block body %}
-    <h1 class="mb-4">Gestion de stock</h1>
-    <div class="custom-page-content p-2">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Produits</th>
-                    <th class="text-center">Nombre de stock</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% if products|length > 0 %}
-                    {% for product in products %}
-                        <tr>
-                            <td>{{ product.title }}</td>
-                            <td class="text-center">{{ product.stock }}</td>
-                            <td class="text-center">
-                                <div class="dropdown">
-                                    <button 
-                                        class="btn btn-link dropdown-toggle" 
-                                        type="button" 
-                                        data-bs-toggle="dropdown" 
-                                        aria-expanded="false"
-                                    >
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="{{ path('app_stock_management_add', { id: product.id }) }}" class="dropdown-item">
-                                                <i class="bi bi-plus-lg fs-5"></i>
-                                                <span class="p-2">Ajouter</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a 
-                                                href="{{ path('app_stock_management_remove', { id: product.id }) }}" 
-                                                class="dropdown-item"
-                                            >
-                                                <i class="bi bi-trash fs-5"></i>
-                                                <span class="p-2">Supprimer</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                {% endif %}
-            </tbody>
-        </table>
-    </div>
+  <h1 class="mb-4">Gestion de stock</h1>
+  <div class="custom-page-content p-2">
+    <table class="table table-hover table-sm align-middle">
+      <thead>
+        <tr>
+          <th>Produits</th>
+          <th class="text-center">Nombre de stock</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+        <tbody>
+          {% if products|length > 0 %}
+            {% for product in products %}
+              <tr>
+                <td>{{ product.title }}</td>
+                <td class="text-center">{{ product.stock }}</td>
+                <td class="text-center">
+                  <div class="dropdown">
+                    <button 
+                      class="btn btn-link dropdown-toggle btn-sm"
+                      type="button" 
+                      data-bs-toggle="dropdown" 
+                      aria-expanded="false"
+                    >
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="{{ path('app_stock_management_add', { id: product.id }) }}" class="dropdown-item">
+                          <i class="bi bi-plus-lg fs-5"></i>
+                          <span class="p-2">Ajouter</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a 
+                          href="{{ path('app_stock_management_remove', { id: product.id }) }}" 
+                          class="dropdown-item"
+                        >
+                          <i class="bi bi-trash fs-5"></i>
+                          <span class="p-2">Supprimer</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+        </tbody>
+    </table>
+  </div>
 {% endblock %}

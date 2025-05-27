@@ -19,15 +19,15 @@
     <h1>Listes des products</h1>
     {{ include("shared/page-actions.html.twig", { actions: actions }) }}
     <div class="custom-page-content p-2">
-        <table class="table table-hover" style="width: 100%;">
+        <table class="table table-hover align-middle table-sm" style="width: 100%;">
             <thead>
                 <tr>
                     <th style="width: 10%;">Titre</th>
                     <th style="width: 15%;">Description</th>
-                    <th style="width: 15%;">Nbr stock</th>
-                    <th style="width: 10%;">Prix (TTC)</th>
+                    <th style="width: 15%;" class="text-end">Nbr stock</th>
+                    <th style="width: 10%;" class="text-end">Prix (TTC)</th>
                     <th style="width: 15%;">Type</th>
-                    <th style="width: 15%;">Marque</th>
+                    <th style="width: 15%;" class="text-center">Marque</th>
                     <th style="width: 10%;">Genre</th>
                     <th style="width: 10%;">actions</th>
                 </tr>
@@ -45,10 +45,10 @@
                         {{ product.description }}
                       </div>
                     </td>
-                    <td style="width: 15%;" class="text-right">{{ product.stock }}</td>
-                    <td style="width: 10%;" class="text-right">{{ product.priceTtc }}</td>
+                    <td style="width: 15%;" class="text-end">{{ product.stock }}</td>
+                    <td style="width: 10%;" class="text-end">{{ product.priceTtc }}</td>
                     <td style="width: 15%;">{{ product.type }}</td>
-                    <td style="width: 15%;">
+                    <td style="width: 15%;" class="text-center">
                         {% if product.brand.logo is defined %}
                             <a href="{{ path('app_vendor_show', {'id': product.brand.id }) }}">
                                 {{
