@@ -1,9 +1,51 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_errors(form) }}
-    <button 
-        class="{{ button_class|default('btn btn-outline-success fw-bold') }}"
+  <div class="row">
+    <div class="col-sm-6 py-2">
+      {{ form_label(form.title) }}
+      {{ form_widget(form.title) }}
+      {{ form_errors(form.title) }}
+    </div>
+    <div class="col-sm-6 py-2">
+      {{ form_label(form.gender) }}
+      {{ form_widget(form.gender) }}
+      {{ form_errors(form.gender) }}
+    </div>
+    <div class="col-sm-6 py-2">
+      {{ form_label(form.type) }}
+      {{ form_widget(form.type) }}
+      {{ form_errors(form.type) }}
+    </div>
+    <div class="col-sm-6 py-2">
+      {{ form_label(form.stock) }}
+      {{ form_widget(form.stock) }}
+      {{ form_errors(form.stock) }}
+    </div>
+    <div class="col-sm-6 py-2">
+      {{ form_label(form.brand) }}
+      {{ form_widget(form.brand) }}
+      {{ form_errors(form.brand) }}
+    </div>
+    <div class="col-sm-6 py-2">
+      {{ form_label(form.priceTtc) }}
+      {{ form_widget(form.priceTtc) }}
+      {{ form_errors(form.priceTtc) }}
+    </div>
+    <div class="col-sm-6 py-2">
+      {{ form_label(form.description) }}
+      {{ form_widget(form.description) }}
+      {{ form_errors(form.description) }}
+    </div>
+    <div class="col-sm-6 py-2">
+      {{ form_label(form.imageFile) }}
+      {{ form_widget(form.imageFile) }}
+      {{ form_errors(form.imageFile) }}
+    </div>
+  </div>
+  <div class="text-end py-3">
+    <button
+      class="{{ button_class|default('btn btn-primary fw-bold') }}"
     >
-        {{ button_label|default('Enregistrer') }}
+      {{ button_label|default('Enregistrer') }}
     </button>
+  </div>
 {{ form_end(form) }}

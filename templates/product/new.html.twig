@@ -1,3 +1,5 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}New Product{% endblock %}
@@ -6,12 +8,16 @@
     { 'path': 'app_product_index', 'label': 'Liste des produits', 'iconClass': "bi bi-list-task"},
 ] %}
 
+{% block pageTitle %}{{ 'title.newProduct'|trans }}{% endblock %}
+
+{% block pageActions %}
+  {{ include("shared/page-actions.html.twig", { actions: actions })  }}
+{% endblock %}
+
 {% block body %}
-    <div>
-        <h1>Creation de produit</h1>
-        {{ include("shared/page-actions.html.twig", { actions: actions })  }}
-        <div class="custom-page-content p-2">
-            {{ include('product/_form.html.twig') }}
-        </div>
+  <div>
+    <div class="custom-page-content p-2">
+        {{ include('product/_form.html.twig') }}
     </div>
+  </div>
 {% endblock %}

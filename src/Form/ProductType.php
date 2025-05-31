@@ -14,17 +14,22 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ProductType extends AbstractType
 {
+    public function __construct(private TranslatorInterface $translator)
+    {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre'
+                'label' => $this->translator->trans('product.label.name', [], 'admin'),
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description'
+                'label' => $this->translator->trans('product.label.description', [], 'admin'),
             ])
             ->add('stock', NumberType::class, [
                 'label' => 'Nombre de stock'

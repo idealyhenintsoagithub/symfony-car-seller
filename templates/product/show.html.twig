@@ -1,3 +1,5 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}Product{% endblock %}
@@ -16,39 +18,39 @@
     },
 ] %}
 
+{% block pageTitle %}{{ 'product.title.detail'|trans }}{% endblock %}
+
+{% block pageActions %}
+  {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+{% endblock %}
+
 {% block body %}
-    <h1>Detail du produit</h1>
-
-    {{ include("shared/page-actions.html.twig", { actions: actions }) }}
-
-    <div class="custom-page-content p-2">
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Titre</th>
-                    <td>{{ product.title }}</td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td>{{ product.description }}</td>
-                </tr>
-                <tr>
-                    <th>Nombre en stock</th>
-                    <td>{{ product.stock }}</td>
-                </tr>
-                <tr>
-                    <th>Prix(TTC)</th>
-                    <td>{{ product.priceTtc }}</td>
-                </tr>
-                <tr>
-                    <th>Type</th>
-                    <td>{{ product.type }}</td>
-                </tr>
-                <tr>
-                    <th>Genre</th>
-                    <td>{{ product.gender }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <table class="table">
+    <tbody>
+      <tr>
+          <th>Titre</th>
+          <td>{{ product.title }}</td>
+      </tr>
+      <tr>
+          <th>Description</th>
+          <td>{{ product.description }}</td>
+      </tr>
+      <tr>
+          <th>Nombre en stock</th>
+          <td>{{ product.stock }}</td>
+      </tr>
+      <tr>
+          <th>Prix(TTC)</th>
+          <td>{{ product.priceTtc }}</td>
+      </tr>
+      <tr>
+          <th>Type</th>
+          <td>{{ product.type }}</td>
+      </tr>
+      <tr>
+            <th>Genre</th>
+            <td>{{ product.gender }}</td>
+        </tr>
+    </tbody>
+  </table>
 {% endblock %}

@@ -5,7 +5,7 @@
 {% block title %}Produits{% endblock %}
 
 {% set actions = [
-  {'path': 'app_product_new', 'label': 'Crée une produit', 'iconClass': 'bi bi-plus-lg'},
+  {path: 'app_product_new', label: 'Crée une produit', 'iconClass': 'bi bi-plus-lg'},
 ] %}
 
 {% set titleStyle = { width: '15%' } %}
@@ -54,6 +54,7 @@
       title: 'Description',
       formatContent: true,
       width: '100px',
+      class: 'table-wrap',
   },
   {
       name: 'stock',
@@ -86,17 +87,17 @@
       width: '100px',
       actions: [
         {
-          'path': 'app_vendor_show',
+          'path': 'app_product_show',
           'label': 'Voire',
           'iconClass': 'bi bi-eye',
         },
         {
-          'path': 'app_vendor_edit',
+          'path': 'app_product_edit',
           'label': 'Modifier',
           'iconClass': 'bi bi-pencil',
         },
         {
-          'path': 'app_vendor_delete',
+          'path': 'app_product_delete',
           'label': 'Supprimer',
           'iconClass': 'bi bi-trash',
         },

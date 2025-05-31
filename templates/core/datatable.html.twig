@@ -28,7 +28,7 @@
       <tr>
         {% for key, column in columns %}
           <td
-            class="table-wrap {{ column.textAlign ?? 'text-start' }}"
+            class="{{ column.textAlign ?? 'text-start ' ~  column.class ?? '' }}"
             style="width: {{ column.width ?? null ~ ';' }}"
           >
             {% if column.formatContent ?? null %}

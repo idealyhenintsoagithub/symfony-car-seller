@@ -1,21 +1,25 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}Modification produit{% endblock %}
 
 {% set actions = [
-    { 
-        'path': 'app_product_index', 
-        'label': 'Liste des produits', 
-        'iconClass': "bi bi-list-task"
-    }
+  { 
+    path: 'app_product_index', 
+    label: 'Liste des produits', 
+    iconClass: 'bi bi-list-task',
+  }
 ] %}
 
-{% block body %}
-    <h1>Modification de produit</h1>
+{% block pageTitle %}{{ 'product.title.edit'|trans }}{% endblock %}
 
+{% block pageActions %}
     {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+{% endblock %}
 
-    <div class="custom-page-content p-2">
-        {{ include('product/_form.html.twig', {'button_label': 'Mettre a jour'}) }}
-    </div>
+{% block body %}
+  <div class="custom-page-content p-2">
+      {{ include('product/_form.html.twig', {'button_label': 'Mettre a jour'}) }}
+  </div>
 {% endblock %}

@@ -7,15 +7,15 @@
   >
     <i class="bi bi-three-dots-vertical"></i>
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu shadow border border-0">
     {% for action in actions %}
       <li>
         <a 
-          class="dropdown-item d-flex align-items-center" 
+          class="dropdown-item d-flex align-items-center px-2"
           href={{ path(action.path, { id: data.id }) }}
         >
           <i class="{{ action.iconClass }}"></i>
-          <div class="p-2">
+          <div class="px-2">
             {{ action.label }}
           </div> 
         </a>

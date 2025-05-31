@@ -3,3 +3,17 @@ title:
   vendor: Liste des fournisseurs
   product: Liste des produits
   stockManagement: Gestion de stock
+  newProduct: Création de produit
+
+product:
+  title:
+    detail: Detail du produit
+    edit: Modification de produit
+
+  label:
+    name: Nom
+    description: Description
+    stockNumber: Nombre de stock
+    brand: Marque
+    priceTtc: Prix TTC
+    type: Type
