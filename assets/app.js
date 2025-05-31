@@ -19,12 +19,10 @@ $(function() {
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
   $('.supplier-navlink').on('click', function (event) {
-    $('#supplier-menu').toggleClass('d-none');
-    $('#models-menu').addClass('d-none');
+    $('#supplier-menu').fadeToggle();
   });
 
   $('.models-navlink').on('click', function (event) {
-    $('#models-menu').toggleClass('d-none');
-    $('#supplier-menu').addClass('d-none');
+    $('#models-menu').fadeToggle();
   });
 });

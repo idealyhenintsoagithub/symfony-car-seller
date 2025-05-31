@@ -1,0 +1,25 @@
+<div class="dropdown text-center w-100">
+  <button 
+    class="btn btn-link dropdown-toggle btn-sm" 
+    type="button" 
+    data-bs-toggle="dropdown" 
+    aria-expanded="false"
+  >
+    <i class="bi bi-three-dots-vertical"></i>
+  </button>
+  <ul class="dropdown-menu">
+    {% for action in actions %}
+      <li>
+        <a 
+          class="dropdown-item d-flex align-items-center" 
+          href={{ path(action.path, { id: data.id }) }}
+        >
+          <i class="{{ action.iconClass }}"></i>
+          <div class="p-2">
+            {{ action.label }}
+          </div> 
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

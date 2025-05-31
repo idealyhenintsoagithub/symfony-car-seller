@@ -1,17 +1,27 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Sign up!{% endblock %}
-
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
     <div class="container mt-5">
       <div class="create-user-container">
-        <h1>Création du compte</h1>
+        <h3>Création du compte</h3>
         <h6 class="my-4">
-          <a href="{{ path('app_login') }}">Login</a>
+          <a href="{{ path('app_login') }}">Se connecter</a>
         </h6>
         {{ form_start(form) }}
           {{ form(form) }}
         {{ form_end(form) }}
       </div>
     </div>
-{% endblock %}
+  {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+  {% endblock %}
+</body>
+</html>

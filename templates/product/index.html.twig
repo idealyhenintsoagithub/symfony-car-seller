@@ -1,9 +1,11 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}Produits{% endblock %}
 
 {% set actions = [
-    {'path': 'app_product_new', 'label': 'Crée une produit', 'iconClass': 'bi bi-plus-lg'},
+  {'path': 'app_product_new', 'label': 'Crée une produit', 'iconClass': 'bi bi-plus-lg'},
 ] %}
 
 {% set titleStyle = { width: '15%' } %}
@@ -15,63 +17,105 @@
 {% set genderStyle = { width: '15%' } %}
 {% set actionsStyle = { width: '15%' } %}
 
-{% block body %}
-    <h1>Listes des products</h1>
-    {{ include("shared/page-actions.html.twig", { actions: actions }) }}
-    <div class="custom-page-content p-2">
-        <table class="table table-hover align-middle table-sm" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th style="width: 10%;">Titre</th>
-                    <th style="width: 15%;">Description</th>
-                    <th style="width: 15%;" class="text-end">Nbr stock</th>
-                    <th style="width: 10%;" class="text-end">Prix (TTC)</th>
-                    <th style="width: 15%;">Type</th>
-                    <th style="width: 15%;" class="text-center">Marque</th>
-                    <th style="width: 10%;">Genre</th>
-                    <th style="width: 10%;">actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for product in products %}
-                <tr>
-                    <td style="width: 10%; white-space: nowrap;" >{{ product.title }}</td>
-                    <td class="table-wrap" style="width: 200px;">
-                      <div
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="bottom"
-                        data-bs-title="{{ product.description }}"
-                      >
-                        {{ product.description }}
-                      </div>
-                    </td>
-                    <td style="width: 15%;" class="text-end">{{ product.stock }}</td>
-                    <td style="width: 10%;" class="text-end">{{ product.priceTtc }}</td>
-                    <td style="width: 15%;">{{ product.type }}</td>
-                    <td style="width: 15%;" class="text-center">
-                        {% if product.brand.logo is defined %}
-                            <a href="{{ path('app_vendor_show', {'id': product.brand.id }) }}">
-                                {{
-                                    include("shared/table-image.html.twig", {
-                                        "imagePath": "images/vendors/" ~ product.brand.logo 
-                                    })
-                                }}
-                            </a>
-                        {% else %}
-                            -
-                        {% endif %}
-                    </td>
-                    <td style="width: 10%;">{{ product.gender }}</td>
-                    <td style="width: 10%;">
-                        {{ include("product/actions.html.twig", { product: product }) }}
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="8">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+{% macro formatBrand(data, column, content) %}
+  <a href="{{ path('app_vendor_show', {'id': data.brand.id }) }}">
+    {{ include("shared/table-image.html.twig", { "imagePath": "images/vendors/" ~ content }) }}
+  </a>
+{% endmacro %}
+
+{% macro format(data, column, content) %}
+  {% if column.name == 'description' %}
+    <div
+      data-bs-toggle="tooltip"
+      data-bs-placement="bottom"
+      data-bs-title="{{ content }}"
+    >
+      {{ content }}
     </div>
+  {% endif %}
+
+  {% if column.name == 'brand' %}
+    {{ _self.formatBrand(data, column, content) }}
+  {% endif %}
+{% endmacro %}
+
+{% set datatableProps = {
+  formatContentPath: '/product/index.html.twig',
+} %}
+
+{% set columns = [
+  {
+      name: 'title',
+      title: 'Titre',
+      width: '100px',
+  },
+  {
+      name: 'description',
+      title: 'Description',
+      formatContent: true,
+      width: '100px',
+  },
+  {
+      name: 'stock',
+      title: 'Nbr stock',
+      width: '100px',
+      textAlign: 'text-end',
+  },
+  {
+      name: 'priceTtc',
+      title: 'Prix TTC',
+      width: '100px',
+      textAlign: 'text-end',
+  },
+  {
+      name: 'type',
+      title: 'Type',
+      width: '100px',
+  },
+  {
+      name: 'brand',
+      field: 'logo',
+      title: 'Brand',
+      width: '100px',
+      formatContent: true,
+      textAlign: 'text-center',
+  },
+  {
+      name: 'actions',
+      title: 'Actions',
+      width: '100px',
+      actions: [
+        {
+          'path': 'app_vendor_show',
+          'label': 'Voire',
+          'iconClass': 'bi bi-eye',
+        },
+        {
+          'path': 'app_vendor_edit',
+          'label': 'Modifier',
+          'iconClass': 'bi bi-pencil',
+        },
+        {
+          'path': 'app_vendor_delete',
+          'label': 'Supprimer',
+          'iconClass': 'bi bi-trash',
+        },
+    ]
+  }
+] %}
+
+{% block pageTitle %}{{ 'title.product'|trans([], 'admin') }}{% endblock %}
+
+{% block pageActions %}
+    {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+{% endblock %}
+
+{% block body %}
+  <div>
+    {{ include('/core/datatable.html.twig', {
+      columns: columns,
+      data: products,
+      datatableProps: datatableProps,
+    }) }}
+  </div>
 {% endblock %}

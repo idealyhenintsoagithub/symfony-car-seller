@@ -1,0 +1,72 @@
+{% import datatableProps.formatContentPath ?? '/core/default_macro.html.twig' as formatContent %}
+
+<table class="table table-hover align-middle table-sm" style="width: 100%;">
+  <thead>
+    <tr>
+      {% for column in columns %}
+        <th
+          class="{{ column.class ?? '' }} {{ column.textAlign ?? '' }} {{ column.name == 'actions' ? 'text-center' : '' }}"
+          {{ column.attr ?? null }}
+        >
+          {% if column.abbr ?? null %}
+            <div
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              data-bs-title="{{ column.title }}"
+            >
+              {{ column.abbr }}
+            </div>
+          {% else %}
+            {{ column.title }}
+          {% endif %}
+        </th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for value in data %}
+      <tr>
+        {% for key, column in columns %}
+          <td
+            class="table-wrap {{ column.textAlign ?? 'text-start' }}"
+            style="width: {{ column.width ?? null ~ ';' }}"
+          >
+            {% if column.formatContent ?? null %}
+              {% set d = attribute(value, column.name) %}
+              {% if column.field ?? false %}
+                {% set lastData = d %}
+                {% for item in column.field|split('.') %}
+                  {% set lastData = attribute(lastData, item) %}
+                {% endfor %}
+
+                {{ formatContent.format(value, column, lastData) }}
+              {% else %}
+                {{ formatContent.format(value, column, attribute(value, column.name)) }}
+              {% endif %}
+            {% elseif column.name == 'actions' %}
+              {{ include('core/actions.html.twig', {
+                actions: column.actions,
+                data: value,
+                column: column
+              }) }}
+            {% elseif column.field ?? false %}
+              {% set data = value %}
+              {% for item in column.field|split('.') %}
+                {% set data = attribute(data, item) %}
+              {% endfor %}
+
+              {{ data }}
+            {% else %}
+              {% set content = attribute(value, column.name) %}
+              {% if content.timestamp is defined %}
+                {{ content|date('d/m/Y') }}
+              {% else %}
+                {{ content }}
+              {% endif %}
+            {% endif %}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

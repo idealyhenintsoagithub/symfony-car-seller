@@ -1,3 +1,5 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}Fournisseurs{% endblock %}
@@ -6,65 +8,45 @@
     {'path': 'app_vendor_new', 'label': 'Crée un fournisseur', 'iconClass': 'bi bi-plus-lg'},
 ] %}
 
+{% set columns = [
+  {
+    name: 'logo',
+    field: 'logo',
+    title: 'Logo',
+  },
+  {
+    name: 'name',
+    title: 'Nom du fournisseur'
+  },
+  {
+    name: 'actions',
+    title: 'Actions',
+    actions: [
+      {
+        'path': 'app_vendor_show',
+        'label': 'Voire',
+        'iconClass': 'bi bi-eye',
+      },
+      {
+        'path': 'app_vendor_edit',
+        'label': 'Modifier',
+        'iconClass': 'bi bi-pencil',
+      },
+      {
+        'path': 'app_vendor_delete',
+        'label': 'Supprimer',
+        'iconClass': 'bi bi-trash',
+      },
+    ],
+  },
+] %}
+
+{% block pageTitle %}{{ 'title.vendor'|trans }}{% endblock %}
+
+{% block pageActions %}
+  {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+{% endblock %}
+
 {% block body %}
-    <div>
-        <h1>Fournisseurs</h1>
-        
-        {{ include("shared/page-actions.html.twig", { actions: actions }) }}
-        
-        <div class="custom-page-content p-2">
-            <table class="table table-hover table-sm align-middle">
-                <thead>
-                    <tr>
-                        <th>Logo</th>
-                        <th>Nom</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for vendor in vendors %}
-                    <tr>
-                        <td>
-                            <img 
-                              src={{ asset("/images/vendors/" ~ vendor.logo) }} 
-                              alt={{ vendor.logo }}
-                              style="height: 30px;"
-                            >
-                        </td>
-                        <td>{{ vendor.name }}</td>
-                        <td>
-                            {%
-                                set tableActions = [
-                                    {
-                                        'path': 'app_vendor_show',
-                                        'label': 'Voire',
-                                        'iconClass': 'bi bi-eye',
-                                        'variables': vendor.id
-                                    },
-                                    {
-                                        'path': 'app_vendor_edit',
-                                        'label': 'Modifier',
-                                        'iconClass': 'bi bi-pencil',
-                                        'variables': vendor.id
-                                    },
-                                    {
-                                        'path': 'app_vendor_delete',
-                                        'label': 'Supprimer',
-                                        'iconClass': 'bi bi-trash',
-                                        'variables': vendor.id
-                                    },
-                                ]
-                            %}
-                            {{ include("/shared/table-actions.html.twig", { actions: tableActions }) }}
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="3">no records found</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>  
-    </div>
+  {{ include('core/datatable.html.twig', {columns: columns, data: vendors}) }}
 {% endblock %}

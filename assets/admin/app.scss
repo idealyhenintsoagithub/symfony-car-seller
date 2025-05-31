@@ -7,16 +7,30 @@ body {
 }
 
 .custom-page-content {
-  // box-shadow: $box-shadow;
   background-color: $custom-page-content-bg;
+}
+
+.page-content {
+  border-radius: 8px;
+}
+
+.navbar.navbar-light {
+  background-color: #ef5350;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
 .navbar-nav {
   .nav-item {
+    color: white;
     &.active {
-      background: #ffc107;
-      border-radius: 8px;
-      font-size: 20px;
+      background: #edf2f9;
+      border-radius: 30px 0px 0px 30px;
+      a.text-white.nav-link {
+        color: black !important;
+      }
     }
   }
 }
@@ -31,5 +45,11 @@ table.table {
         overflow: hidden;
       }
     }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .page-content {
+    margin-left: 250px;
   }
 }
