@@ -41,7 +41,7 @@
       </tr>
       <tr>
           <th>Prix(TTC)</th>
-          <td>{{ product.priceTtc }}</td>
+          <td>{{ product.priceTtc|number_format(2, '.', ' ') }}</td>
       </tr>
       <tr>
           <th>Type</th>

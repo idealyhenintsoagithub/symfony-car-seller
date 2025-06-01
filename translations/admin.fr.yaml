@@ -17,3 +17,24 @@ product:
     brand: Marque
     priceTtc: Prix TTC
     type: Type
+
+vendor:
+  title:
+    detail: Detail du fournisseur
+    edit: Modification du fournisseur
+    add: Ajouter des produit en stock
+
+  label:
+    logo: Logo
+    name: Nom du fournisseur
+
+order:
+  title:
+    detail: Detail de la commande
+  
+  label:
+    clientName: Client
+    product: Produit
+    quantity: Quantité
+    totalCost: Prix totale
+    unitPrice: Prix unitaire

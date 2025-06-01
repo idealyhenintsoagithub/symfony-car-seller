@@ -23,8 +23,21 @@
   {
     name: 'total',
     title: 'Cout totale',
+    type: 'number',
     textAlign: 'text-end',
   },
+  {
+    name: 'actions',
+    title: 'Actions',
+    width: '100px',
+    actions: [
+      {
+        'path': 'app_order_details',
+        'label': 'Voire',
+        'iconClass': 'bi bi-eye',
+      },
+    ]
+  }
 ] %}
 
 {% block pageTitle %}{{ 'title.order'|trans }}{% endblock %}

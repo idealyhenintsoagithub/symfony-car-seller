@@ -1,49 +1,74 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}Commande{% endblock %}
 
-{% block body %}
-  <div>
-    <h1>
-      Detail du commande N°: <b>{{ order.id }}</b>
-    </h1>
-    <div class="custom-page-content p-2 bg-white mt-5">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Produis</th>
-                    <th scope="col" class="text-center">Quantiter</th>
-                    <th scope="col" class="text-center">Prix unitaire</th>
-                    <th scope="col" class="text-center">Prix totale</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for orderItem in order.orderItems %}
-                    <tr>
-                        <th scope="row">
-                            {{ orderItem.product.title }}
-                        </th>
-                        <td class="text-center">{{ orderItem.quantity }}</td>
-                        <td class="text-center">
-                          {{ orderItem.product.priceTtc }}
-                          <i class="bi bi-currency-dollar"></i>
-                        </td>
-                        <td class="text-center">
-                          {{ orderItem.getTotal }}
-                          <i class="bi bi-currency-dollar"></i>
-                        </td>
-                    </tr>
-                {% endfor %}
-                <tr>
-                  <th colspan="2">Prix totale</th>
-                  <th></th>
-                  <th class="text-center">
-                    {{ order.getTotal }}
-                    <i class="bi bi-currency-dollar"></i>
-                  </th>
-                </tr>
-            </tbody>
-        </table>
+{% block pageTitle %}{{ 'order.title.detail'|trans }}{% endblock %}
+
+{% block pageSubHeader %}
+  <div class="bg-white rounded-3 p-3 my-3">
+    <div class="d-flex">
+      <div class="">
+        <img
+          src="{{ asset('/images/avatar-1.jpg') }}"
+          alt="avatar"
+          style="width: 100px; height: 100px; border-radius: 50%;"
+        >
+      </div>
+      <div class="px-4 py-2 border-end">
+        <div class="fw-bold">
+          {{ order.client.firstName }} {{ order.client.lastName }}
+        </div>
+        <div>
+          {{ order.client.email }}
+        </div>
+      </div>
+      <div class="px-4 py-2  border-end">
+        <div class="fw-medium">Adresse</div>
+        <div class="pb-3">{{ order.client.adress|default(' - ') }}</div>
+        <div class="fw-medium">Contact</div>
+        <div>{{ order.client.phone|default(' - ') }}</div>
+      </div>
     </div>
-  </div>
+  </div>  
+{% endblock %}
+
+{% block body %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">{{ 'order.label.product'|trans }}</th>
+        <th scope="col" class="text-center">{{ 'order.label.quantity'|trans }}</th>
+        <th scope="col" class="text-center">{{ 'order.label.unitPrice'|trans }}</th>
+        <th scope="col" class="text-center">{{ 'order.label.totalCost'|trans }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for orderItem in order.orderItems %}
+          <tr>
+              <th scope="row">
+                  {{ orderItem.product.title }}
+              </th>
+              <td class="text-center">{{ orderItem.quantity }}</td>
+              <td class="text-center">
+                {{ orderItem.product.priceTtc|number_format(2, '.', ' ') }}
+                <i class="bi bi-currency-dollar"></i>
+              </td>
+              <td class="text-center">
+                {{ orderItem.getTotal|number_format(2, '.', ' ') }}
+                <i class="bi bi-currency-dollar"></i>
+              </td>
+          </tr>
+      {% endfor %}
+      <tr>
+        <th colspan="2">Prix totale</th>
+        <th></th>
+        <th class="text-center">
+          {{ order.getTotal|number_format(2, '.', ' ') }}
+          <i class="bi bi-currency-dollar"></i>
+        </th>
+      </tr>
+    </tbody>
+  </table>
 {% endblock %}

@@ -8,11 +8,25 @@
     {'path': 'app_vendor_new', 'label': 'Crée un fournisseur', 'iconClass': 'bi bi-plus-lg'},
 ] %}
 
+{% macro formatBrand(data, column, content) %}
+  {{ include("shared/table-image.html.twig", { "imagePath": "images/vendors/" ~ content }) }}
+{% endmacro %}
+
+{% macro format(data, column, content) %}
+  {% if column.name == 'logo' %}
+    {{ _self.formatBrand(data, column, content) }}
+  {% endif %}
+{% endmacro %}
+
+{% set datatableProps = {
+  formatContentPath: '/vendor/index.html.twig',
+} %}
+
 {% set columns = [
   {
     name: 'logo',
-    field: 'logo',
     title: 'Logo',
+    formatContent: true,
   },
   {
     name: 'name',
@@ -48,5 +62,9 @@
 {% endblock %}
 
 {% block body %}
-  {{ include('core/datatable.html.twig', {columns: columns, data: vendors}) }}
+  {{ include('core/datatable.html.twig', {
+    columns: columns,
+    data: vendors,
+    datatableProps: datatableProps,
+  }) }}
 {% endblock %}

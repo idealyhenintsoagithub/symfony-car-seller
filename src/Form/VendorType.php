@@ -18,7 +18,8 @@ class VendorType extends AbstractType
                 'label' => 'Nom du fournisseur'
             ])
             ->add('imageFile', FileType::class, [
-                'label' => 'Logo du fournisseur'
+                'label' => 'Logo du fournisseur',
+                'required' => false,
             ])
         ;
     }

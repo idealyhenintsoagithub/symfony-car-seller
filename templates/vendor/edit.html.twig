@@ -1,3 +1,5 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}Fournisseurs{% endblock %}
@@ -7,17 +9,14 @@
     {'path': 'app_vendor_delete', 'label': 'Supprimer', 'iconClass': 'bi bi-trash', 'variables': vendor.id },
 ] %}
 
-{% block body %}
-    <div>
-        <h1>Modification de fournisseur</h1>
-        
-        {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+{% block pageTitle %}{{ 'vendor.title.edit'|trans }}{% endblock %}
 
-        <div class="p-4 bg-white">
-            {{ include('vendor/_form.html.twig', {
-                'button_label': 'Mettre à jour', 
-                'button_class': 'btn btn-outline-success'
-            }) }}
-        </div>
-    </div>
+{% block pageActions %}
+  {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+{% endblock %}
+{% block body %}
+  {{ include('vendor/_form.html.twig', {
+      'button_label': 'Mettre à jour', 
+      'button_class': 'btn btn-primary'
+  }) }}
 {% endblock %}

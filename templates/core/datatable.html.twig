@@ -60,6 +60,8 @@
               {% set content = attribute(value, column.name) %}
               {% if content.timestamp is defined %}
                 {{ content|date('d/m/Y') }}
+              {% elseif column.type|default('string') == 'number' %}
+                {{ content|number_format(2, '.', ' ') }}
               {% else %}
                 {{ content }}
               {% endif %}

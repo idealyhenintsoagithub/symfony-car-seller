@@ -53,23 +53,23 @@
             <i class="bi bi-person-circle fs-5"></i>
             {{ app.user.email }}
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu border shadow-sm">
             <li>
               <a 
-                class="dropdown-item d-flex align-items-center px-2" 
-                href={{ path('app_logout') }}
+                class="dropdown-item d-flex align-items-center p-2" 
+                href={{ path('app_client_order') }}
               >
-                <i class="bi bi-box-arrow-right fs-5 m-1"></i>
-                <div class="m-1">Ma commande</div>
+                <i class="bi bi-bag-check ps-3"></i>
+                <div class="px-3">Ma commande</div>
               </a>
             </li>
             <li>
               <a 
-                class="dropdown-item d-flex align-items-center px-2" 
+                class="dropdown-item d-flex align-items-center p-2" 
                 href={{ path('app_logout') }}
               >
-                <i class="bi bi-box-arrow-right fs-5 m-1"></i>
-                <div class="m-1">Deconnexion</div>
+                <i class="bi bi-box-arrow-right ps-3"></i>
+                <div class="px-3">Deconnexion</div>
                 </div> 
               </a>
             </li>

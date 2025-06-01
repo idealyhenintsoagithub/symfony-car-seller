@@ -14,6 +14,22 @@
     title: 'Nombre de stock',
     textAlign: 'text-end',
   },
+  {
+    name: 'actions',
+    title: 'Actions',
+    actions: [
+      {
+        path: 'app_stock_management_add',
+        label: 'Modifier',
+        iconClass: 'bi bi-pencil',
+      },
+      {
+        path: 'app_stock_management_remove',
+        label: 'Supprimer',
+        iconClass: 'bi bi-trash',
+      },
+    ]
+  }
 ] %}
 
 {% block pageTitle %}{{ 'title.stockManagement'|trans }}{% endblock %}

@@ -41,14 +41,16 @@ const chart = new Chart(
       labels: labels,
       datasets: [
         {
-          backgroundColor: ['#ff00006e', '#00ff006e', '#ffc1076e', '#0000ff6e'],
-          borderWidth: 2,
-          borderColor: ['#ff0000ff', '#00ff00ff', '#ffc107ff', '#0000ffff'],
+          backgroundColor: '#2c7be5',
+          borderWidth: 0,
+          borderColor: '#2c7be5',
           // label: 'Nombre des voitures',
-          data: data
+          data: data,
+          barThickness: 10, // Set a fixed bar thickness
+          borderRadius: 10,
         }
       ]
-    }
+    },
   }
 );
 var totalOrderElement = document.getElementById('totalOrder');

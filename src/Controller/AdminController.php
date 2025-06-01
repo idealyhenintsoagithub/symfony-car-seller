@@ -43,7 +43,8 @@ class AdminController extends AbstractController
             'productPerVendor' => $parsedData,
             'totalOrder' => $totalOrder,
             'totalOrderValues' => $total / 1000,
-            'userTotal' => count($userRepository->findAll())
+            'userTotal' => count($userRepository->findAll()),
+            'orders' => $orderRepository->findAll(),
         ]);
     }
 }

@@ -1,3 +1,5 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}Detail fournisseur{% endblock %}
@@ -16,30 +18,25 @@
     }
 ] %}
 
+{% block pageTitle %}{{ 'vendor.title.detail'|trans }}{% endblock %}
+
+{% block pageActions %}
+  {{ include("shared/page-actions.html.twig", { actions: actions }) }}  
+{% endblock %}
+
 {% block body %}
-    <div>
-        <h1>Detail du produit</h1>
-        {{ include("shared/page-actions.html.twig", { actions: actions }) }}
-        <div class="p-2 bg-white">
-            <table class="table p-2">
-                <tbody>
-                    <tr>
-                        <th>Logo</th>
-                        <td>
-                            {{ include("shared/table-image.html.twig", { 'imagePath': '/images/vendors/' ~ vendor.logo }) }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>No, du fournisseur</th>
-                        <td>{{ vendor.name }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    {# <a href="{{ path('app_vendor_index') }}">back to list</a>
-
-    <a href="{{ path('app_vendor_edit', {'id': vendor.id}) }}">edit</a> #}
-
-    {# {{ include('vendor/_delete_form.html.twig') }} #}
+  <table class="table p-2">
+    <tbody>
+      <tr>
+        <th>{{ 'vendor.label.logo'|trans }}</th>
+        <td>
+          {{ include("shared/table-image.html.twig", { 'imagePath': '/images/vendors/' ~ vendor.logo }) }}
+        </td>
+      </tr>
+      <tr>
+        <th>{{ 'vendor.label.name'|trans }}</th>
+        <td>{{ vendor.name }}</td>
+      </tr>
+    </tbody>
+  </table>
 {% endblock %}

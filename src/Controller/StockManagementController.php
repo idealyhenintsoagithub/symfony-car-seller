@@ -12,10 +12,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/admin/stock")
+ */
 class StockManagementController extends AbstractController
 {
     /**
-     * @Route("/stock/management", name="app_stock_management")
+     * @Route("/management", name="app_stock_management")
      */
     public function index(
         Request $request, 
@@ -29,7 +32,7 @@ class StockManagementController extends AbstractController
     }
     
     /**
-     * @Route("/stock/add/{id}/product", name="app_stock_management_add")
+     * @Route("/add/{id}/product", name="app_stock_management_add")
      */
     public function addProductStock(
         Product $product,
@@ -56,7 +59,7 @@ class StockManagementController extends AbstractController
     }
     
     /**
-     * @Route("/stock/remove/{id}/product", name="app_stock_management_remove")
+     * @Route("/remove/{id}/product", name="app_stock_management_remove")
      */
     public function removeProductStock(
         Product $product,

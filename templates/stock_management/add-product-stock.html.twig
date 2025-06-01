@@ -1,22 +1,22 @@
+{% trans_default_domain 'admin' %}
+
 {% extends 'admin/admin-layout.html.twig' %}
 
 {% block title %}Gestion des stock{% endblock %}
 
+{% block pageTitle %}{{ 'vendor.title.add'|trans }}{% endblock %}
 {% block body %}
-  <div>
-    <h1>Ajouter des produit</h1>
-    <div class="custom-page-content p-4">
-      <h5>Produit: {{ product.title }}</h5>
-      <h5>Stock: {{ product.stock }}</h5>
-      {{ form_start(form) }}
-        {{ form_widget(form.stock) }}
-        <div class="d-flex mt-2">
-          {{ form_widget(form.save) }}
-          <div class="ml-2">
-            <a href="{{ path('app_stock_management') }}" class="btn btn-link">Annuler</a>
-          </div>
+  <div class="custom-page-content p-4">
+    <h5>Produit: {{ product.title }}</h5>
+    <h5>Stock: {{ product.stock }}</h5>
+    {{ form_start(form) }}
+      {{ form_widget(form.stock) }}
+      <div class="d-flex mt-2">
+        {{ form_widget(form.save) }}
+        <div class="ml-2">
+          <a href="{{ path('app_stock_management') }}" class="btn btn-link">Annuler</a>
         </div>
-      {{ form_end(form) }}
-    </div>
+      </div>
+    {{ form_end(form) }}
   </div>
 {% endblock %}
