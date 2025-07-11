@@ -39,6 +39,15 @@ class OrderRepository extends ServiceEntityRepository
         }
     }
 
+    public function getLatestOrders()
+    {
+        return $this->createQueryBuilder('o')
+            ->orderBy('o.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
     /**
      * Finds carts that have not been modified since the given date.
      *

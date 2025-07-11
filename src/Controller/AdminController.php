@@ -44,7 +44,7 @@ class AdminController extends AbstractController
             'totalOrder' => $totalOrder,
             'totalOrderValues' => $total / 1000,
             'userTotal' => count($userRepository->findAll()),
-            'orders' => $orderRepository->findAll(),
+            'orders' => $orderRepository->getLatestOrders(),
         ]);
     }
 }

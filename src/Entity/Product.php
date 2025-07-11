@@ -7,11 +7,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Class Product
  * 
- * @ApiResource()
+ * @ApiResource(
+ *  normalizationContext={"groups"={"product:read"}, "enable_max_depth"=true}
+ * )
  * @Vich\Uploadable
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
@@ -21,36 +24,43 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"product:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"product:read"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
+     * @Groups({"product:read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"product:read"})
      */
     private $stock;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"product:read"})
      */
     private $priceTtc;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"product:read"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"product:read"})
      */
     private $gender;
 
@@ -71,11 +81,13 @@ class Product
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Groups({"product:read"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Groups({"product:read"})
      */
     private $updatedAt;
 
