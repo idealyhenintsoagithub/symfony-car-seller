@@ -66,6 +66,7 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"product:read"})
      */
     private $image;
 
@@ -73,11 +74,6 @@ class Product
      * @Vich\UploadableField(mapping="products", fileNameProperty="image")
      */
     private $imageFile = null;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Vendor::class, inversedBy="products")
-     */
-    private $brand;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -90,6 +86,16 @@ class Product
      * @Groups({"product:read"})
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Brand::class, cascade={"persist", "remove"})
+     */
+    private $brand;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Vendor::class)
+     */
+    private $vendor;
 
     public function __construct()
     {
@@ -210,18 +216,6 @@ class Product
         return $this->imageFile;
     }
 
-    public function getBrand(): ?Vendor
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?Vendor $brand): self
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
@@ -242,6 +236,30 @@ class Product
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getVendor(): ?Vendor
+    {
+        return $this->vendor;
+    }
+
+    public function setVendor(?Vendor $vendor): self
+    {
+        $this->vendor = $vendor;
 
         return $this;
     }

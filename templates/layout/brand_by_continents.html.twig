@@ -1,0 +1,29 @@
+<div class="p-2" id="supplier-menu">
+  <div class="container">
+    <div class="row">
+      <div class="row col-md-8 border-end">
+          {% for supplier in suppliers %}
+            <div class="col-md-2 text-center g-3">
+              <a href="{{ url('products_by_category', {'categoryName': supplier.name}) }}">
+                <img
+                  src="{{ asset('images/vendors/' ~ supplier.logo) }}"
+                  alt="{{ supplier.name }}"
+                  style="width: 50px; height: 50px;"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  data-bs-title="{{ supplier.name }}"
+                >
+              </a>
+            </div>
+          {% endfor %}
+      </div>
+      <div class="col-md-4">
+        {% for n in 0..4 %}
+          <h6 class="py-2 px-5 fs-6 ">
+            {{ ('continent.' ~ continents[n])|trans([], 'messages') }}
+          </h6>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

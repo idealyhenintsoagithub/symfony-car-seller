@@ -13,3 +13,11 @@ home:
   label:
     buyOnline: "Achétez vôtre voiture facilement en ligne"
     findYourGame: "Trouvez votre game parmis nos fournisseurs"
+
+continent:
+  all: "Tout"
+  afrique: "Afrique"
+  europe: "Europe"
+  asia: "Asie"
+  america: "Amerique"
+  australia: "Australi"

@@ -9,13 +9,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Fournisseur
  *
  * @Vich\Uploadable
  * @ORM\Entity(repositoryClass=VendorRepository::class)
+ * @ApiResource(
+ *  normalizationContext={"groups"={"vendor:list"}, "enable_max_depth"=true}
+ * )
  */
 class Vendor
 {
@@ -23,16 +26,19 @@ class Vendor
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"vendor:list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"vendor:list"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"vendor:list"})
      */
     private $logo;
 
