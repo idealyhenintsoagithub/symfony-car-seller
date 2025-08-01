@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Brand;
 use App\Entity\Product;
 use App\Entity\Vendor;
 use App\Entity\OrderItem;
@@ -20,14 +21,45 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="app_home")
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager, Request $request): Response
     {
-        $products = $entityManager->getRepository(Product::class)->findAll();
-        $vendors = $entityManager->getRepository(Vendor::class)->findAll();
+        $topBrands = [
+            'Volkswagen',
+            'Volvo',
+            'Mercedes-benz',
+            'Mazda',
+            'Tesla',
+            'Toyota',
+            'Kia',
+            'Renault',
+            'Ford',
+            'Opel',
+            'Peugeot',
+            'Suzuki',
+            'Hyundai',
+            'Nissan',
+            'Lexus',
+            'Land Rover',
+            'Lamborghini',
+            'Gmc',
+            'Honda',
+            'Ferrari',
+        ];
+        $products = [];
+        $query = $request->query->get('logo');
 
+        if ($query) {
+            $products = $entityManager
+                ->getRepository(Product::class)
+                ->getProductByBrand($query);
+        } else {
+            $products = $entityManager->getRepository(Product::class)->findAll();
+        }
+        $brands = $entityManager->getRepository(Brand::class)->getTopBrand($topBrands);
+        
         return $this->render('home/index.html.twig', [
             'products' => $products,
-            'vendors' => $vendors
+            'brands' => $brands,
         ]);
     }
 

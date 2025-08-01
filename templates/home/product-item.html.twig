@@ -1,6 +1,6 @@
 
-<div class="col-sm-4 product-item mb-4">
-  <div class="product-item-content rounded-3">
+<div class="col-sm-3 product-item mb-4">
+  <div class="product-item-content rounded-3 bg-white">
     <a href={{ path("product_detail", { id: product.id }) }} class="text-decoration-none">
       <img
         src={{ asset(product.image ? "images/products/" ~ product.image : "images/rover.jpg") }}
@@ -9,20 +9,17 @@
         class="rounded-3"
       />
       <div class="p-3">
-        <h4 class="pt-4">{{ product.title }}</h4>
+        <h6 class="pt-4">{{ product.title }}</h6>
         <div class="py-1">
           {{ product.description }}
         </div>
         <div class="py-2 d-flex justify-content-between">
-          <div class="d-flex align-items-center">
-            <i class="bi bi-currency-euro fs-5"></i>
+          <div class="d-flex align-items-center fw-bold">
+            <i class="bi bi-currency-euro fs-6"></i>
             <div>{{ product.priceTtc }}</div>
           </div>
-          <a href="#" class="d-flex align-items-center">
-            <div class="pe-2">
-              Voire plus
-            </div>
-            <i class="bi bi-chevron-right fs-5"></i>
+          <a href={{ path("product_detail", { id: product.id }) }} class="d-flex align-items-center text-primary">
+            Voir plus
           </a>
         </div>
       </div>

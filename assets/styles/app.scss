@@ -1,11 +1,8 @@
 @import './variables.scss';
+@import './reboot.scss';
 @import './home.scss';
 @import './cart.scss';
 @import './login.scss';
-
-body {
-  color: $default-font-color;
-}
 
 .dropdown-toggle::after {
   display: none !important;

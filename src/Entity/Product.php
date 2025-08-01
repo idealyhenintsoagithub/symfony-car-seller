@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,19 +14,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Class Product
  * 
- * @ApiResource(
- *  normalizationContext={"groups"={"product:read"}, "enable_max_depth"=true}
- * )
  * @Vich\Uploadable
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
+#[ApiResource(normalizationContext: ["groups" => ["product:brand:list", "product:read"]])]
+#[ApiFilter(SearchFilter::class, properties: ['brand.name'])]
 class Product
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"product:read"})
+     * @Groups({"product:read", "product:brand:list"})
      */
     private $id;
 
@@ -88,14 +89,16 @@ class Product
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity=Brand::class, cascade={"persist", "remove"})
-     */
-    private $brand;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Vendor::class)
+     * @Groups({"product:read"})
      */
     private $vendor;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Brand::class)
+     * @Groups({"product:read", "product:brand:list"})
+     */
+    private $brand;
 
     public function __construct()
     {
@@ -240,18 +243,6 @@ class Product
         return $this;
     }
 
-    public function getBrand(): ?Brand
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?Brand $brand): self
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
     public function getVendor(): ?Vendor
     {
         return $this->vendor;
@@ -260,6 +251,18 @@ class Product
     public function setVendor(?Vendor $vendor): self
     {
         $this->vendor = $vendor;
+
+        return $this;
+    }
+
+    public function getBrand(): ?brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?brand $brand): self
+    {
+        $this->brand = $brand;
 
         return $this;
     }

@@ -66,6 +66,16 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getProductByBrand(String $brand)
+    {
+        return $this->createQueryBuilder('p')
+                ->join('p.brand', 'brand')
+                ->where('brand.name LIKE :brandName')
+                ->setParameter('brandName', '%'.$brand.'%')
+                ->getQuery()
+                ->getResult();
+    }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */

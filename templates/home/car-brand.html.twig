@@ -2,8 +2,8 @@
   <h4 class="text-center">Trouvez votre game parmis nos fournisseurs</h4>
   <div class="container py-5">
     <div class="row align-items-center">
-      {% for vendor in vendors %}
-        {{ include("home/car-brand-item.html.twig", { vendor: vendor }) }}
+      {% for brand in brands %}
+        {{ include("home/car-brand-item.html.twig", { brand: brand }) }}
       {% endfor %}
     </div>
   </div>

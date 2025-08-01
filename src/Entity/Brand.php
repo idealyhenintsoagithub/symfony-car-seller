@@ -33,19 +33,19 @@ class Brand
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"brand:create", "brand:list"})
+     * @Groups({"brand:create", "brand:list", "product:brand:list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"brand:create", "brand:list"})
+     * @Groups({"brand:create", "brand:list", "product:brand:list"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"brand:create", "brand:list"})
+     * @Groups({"brand:create", "brand:list", "product:brand:list"})
      */
     private $logo;
 

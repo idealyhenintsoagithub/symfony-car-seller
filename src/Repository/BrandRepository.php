@@ -39,6 +39,15 @@ class BrandRepository extends ServiceEntityRepository
         }
     }
 
+    public function getTopBrand(array $topBrands)
+    {
+        return $this->createQueryBuilder('b')
+            ->where('b.name IN (:brands)')
+            ->setParameter('brands', $topBrands)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Brand[] Returns an array of Brand objects
 //     */

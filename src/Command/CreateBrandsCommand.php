@@ -13,10 +13,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
-    name: 'app:brand:create',
+    name: 'app:create:brands',
     description: 'Add a short description for your command',
 )]
-class BrandCreateCommand extends Command
+class CreateBrandsCommand extends Command
 {
     public function __construct(private EntityManagerInterface $em)
     {
@@ -1573,7 +1573,7 @@ class BrandCreateCommand extends Command
 
         foreach ($brands as $brand) {
             $newBrand = new Brand();
-            $newBrand->setName($brand['name']);
+            $newBrand->setName(ucwords(strtolower($brand['name'])));
             $newBrand->setLogo($brand['logo']);
             $this->em->persist($newBrand);
         }

@@ -11,7 +11,7 @@
             <h2>{{ 'home.title.pageTitle'|trans }}</h2>
         </div>
     </div>
-    <div class="container product-page">
+    <div class="container-fluid product-page">
         <div class="pt-4">
             <h4 class="text-center">
                 {{ 'home.label.buyOnline'|trans }}
@@ -20,7 +20,7 @@
         
         {{ include('home/car-brand.html.twig') }}
 
-        <div class="row product-list-container">
+        <div class="row product-list-container gutter-3">
             {% for product in products %}
                 {{ include('home/product-item.html.twig', { product: product }) }}
             {% endfor %}
