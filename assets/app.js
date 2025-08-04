@@ -6,8 +6,6 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import 'bootstrap/scss/bootstrap.scss';
-import 'bootstrap-icons/font/bootstrap-icons.scss';
 import './styles/app.scss';
 import '@popperjs/core';
 import * as bootstrap from 'bootstrap';
@@ -25,4 +23,9 @@ $(function() {
   $('.models-navlink').on('click', function (event) {
     $('#models-menu').fadeToggle();
   });
+
+  console.info(window.shouldScroll);
+  if (window.shouldScroll) {
+    document.getElementById('product-list-container').scrollIntoView({ behavior : 'smooth' });
+  }
 });

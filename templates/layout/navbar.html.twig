@@ -1,6 +1,6 @@
 {% set continents = ['all', 'europe', 'america', 'asia', 'afrique'] %}
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href={{ path('app_home') }}>
       {{ 'home.title.pageName'|trans }}
@@ -85,10 +85,3 @@
     </div>
   </div>
 </nav>
-
-{{ include('layout/brand_by_continents.html.twig') }}
-
-<div class="p-2" id="models-menu">
-  <div class="d-flex">
-  </div>
-</div>

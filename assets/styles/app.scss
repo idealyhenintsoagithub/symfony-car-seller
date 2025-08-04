@@ -1,8 +1,12 @@
 @import './variables.scss';
-@import './reboot.scss';
+@import './_reboot.scss';
 @import './home.scss';
 @import './cart.scss';
 @import './login.scss';
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-icons/font/bootstrap-icons.scss';
+
+$enable-negative-margins: true;
 
 .dropdown-toggle::after {
   display: none !important;

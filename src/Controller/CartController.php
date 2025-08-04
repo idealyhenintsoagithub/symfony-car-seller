@@ -36,7 +36,7 @@ class CartController extends AbstractController
             return $this->redirectToRoute("app_cart");
         }
 
-        return $this->render('cart/index.html.twig', [
+        return $this->render('shop/cart/index.html.twig', [
             'form' => $form->createView(),
             'cart' => $currentCart,
             'message' => $message,
@@ -77,7 +77,7 @@ class CartController extends AbstractController
             ]);
         }
 
-        return $this->render("cart/validate-cart.html.twig", [
+        return $this->render("shop/cart/validate-cart.html.twig", [
             'form' => $form->createView()
         ]);
     }

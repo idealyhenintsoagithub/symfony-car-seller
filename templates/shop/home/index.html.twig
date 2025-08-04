@@ -18,12 +18,15 @@
             </h4>
         </div>
         
-        {{ include('home/car-brand.html.twig') }}
+        {{ include('shop/home/car-brand.html.twig') }}
 
-        <div class="row product-list-container gutter-3">
+        <div class="row product-list-container gutter-3" id="product-list-container">
             {% for product in products %}
-                {{ include('home/product-item.html.twig', { product: product }) }}
+                {{ include('shop/home/product-item.html.twig', { product: product }) }}
             {% endfor %}
         </div>
     </div>
+    <script>
+        var shouldScroll = '{{ shouldScroll }}'
+    </script>
 {% endblock %}

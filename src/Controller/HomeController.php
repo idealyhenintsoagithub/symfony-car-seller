@@ -47,19 +47,22 @@ class HomeController extends AbstractController
         ];
         $products = [];
         $query = $request->query->get('logo');
+        $shouldScroll = false;
 
         if ($query) {
             $products = $entityManager
                 ->getRepository(Product::class)
                 ->getProductByBrand($query);
+            $shouldScroll = true;
         } else {
             $products = $entityManager->getRepository(Product::class)->findAll();
         }
         $brands = $entityManager->getRepository(Brand::class)->getTopBrand($topBrands);
         
-        return $this->render('home/index.html.twig', [
+        return $this->render('shop/home/index.html.twig', [
             'products' => $products,
             'brands' => $brands,
+            'shouldScroll' => $shouldScroll,
         ]);
     }
 
@@ -93,7 +96,7 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('product_detail', ['id' => $product->getId()]);
         }
 
-        return $this->render('home/product-details.html.twig', [
+        return $this->render('shop/home/product-details.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
             'relativeProducts' => $relativeProducts
