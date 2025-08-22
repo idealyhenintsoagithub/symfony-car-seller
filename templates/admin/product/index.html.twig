@@ -18,9 +18,7 @@
 {% set actionsStyle = { width: '15%' } %}
 
 {% macro formatBrand(data, column, content) %}
-  <a href="{{ path('app_vendor_show', {'id': data.brand.id }) }}">
-    {{ include("shared/table-image.html.twig", { "imagePath": "images/vendors/" ~ content }) }}
-  </a>
+  {{ include("shared/table-image.html.twig", { "imagePath": "images/logos/original/" ~ content }) }}
 {% endmacro %}
 
 {% macro format(data, column, content) %}
@@ -40,7 +38,7 @@
 {% endmacro %}
 
 {% set datatableProps = {
-  formatContentPath: '/product/index.html.twig',
+  formatContentPath: 'admin/product/index.html.twig',
 } %}
 
 {% set columns = [
@@ -77,7 +75,7 @@
   {
       name: 'brand',
       field: 'logo',
-      title: 'Brand',
+      title: 'Marque',
       width: '100px',
       formatContent: true,
       textAlign: 'text-center',

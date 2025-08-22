@@ -26,7 +26,7 @@ class StockManagementController extends AbstractController
         EntityManagerInterface $em
     ): Response
     {
-        return $this->render('stock_management/index.html.twig', [
+        return $this->render('admin/stock_management/index.html.twig', [
             'products' => $productRepository->findAll()
         ]);
     }
@@ -52,7 +52,7 @@ class StockManagementController extends AbstractController
             return $this->redirectToRoute('app_stock_management');
         }
 
-        return $this->render('stock_management/add-product-stock.html.twig', [
+        return $this->render('admin/stock_management/add-product-stock.html.twig', [
             'product' => $product,
             'form' => $form->createView()
         ]);
@@ -83,7 +83,7 @@ class StockManagementController extends AbstractController
             return $this->redirectToRoute('app_stock_management');
         }
 
-        return $this->render('stock_management/remove-product-stock.html.twig', [
+        return $this->render('admin/stock_management/remove-product-stock.html.twig', [
             'product' => $product,
             'form' => $form->createView()
         ]);

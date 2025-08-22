@@ -20,7 +20,7 @@ class VendorController extends AbstractController
      */
     public function index(VendorRepository $vendorRepository): Response
     {
-        return $this->render('vendor/index.html.twig', [
+        return $this->render('admin/vendor/index.html.twig', [
             'vendors' => $vendorRepository->findAll(),
         ]);
     }
@@ -40,7 +40,7 @@ class VendorController extends AbstractController
             return $this->redirectToRoute('app_vendor_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('vendor/new.html.twig', [
+        return $this->renderForm('admin/vendor/new.html.twig', [
             'vendor' => $vendor,
             'form' => $form,
         ]);
@@ -51,7 +51,7 @@ class VendorController extends AbstractController
      */
     public function show(Vendor $vendor): Response
     {
-        return $this->render('vendor/show.html.twig', [
+        return $this->render('admin/vendor/show.html.twig', [
             'vendor' => $vendor,
         ]);
     }
@@ -70,7 +70,7 @@ class VendorController extends AbstractController
             return $this->redirectToRoute('app_vendor_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('vendor/edit.html.twig', [
+        return $this->renderForm('admin/vendor/edit.html.twig', [
             'vendor' => $vendor,
             'form' => $form,
         ]);

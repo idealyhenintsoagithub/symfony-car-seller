@@ -19,7 +19,7 @@ class OrderController extends AbstractController
      */
     public function index(OrderRepository $orderRepository): Response
     {
-        return $this->render('order/index.html.twig', [
+        return $this->render('admin/order/index.html.twig', [
             'orders' => $orderRepository->findBy(['status' => Order::STATUS_CART_VALIDATE])
         ]);
     }
@@ -29,7 +29,7 @@ class OrderController extends AbstractController
      */
     public function orderDetails(Order $order)
     {
-        return $this->render('order/order-details.html.twig', [
+        return $this->render('admin/order/order-details.html.twig', [
             'order' => $order
         ]);
     }

@@ -53,17 +53,6 @@ class Product
      */
     private $priceTtc;
 
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     * @Groups({"product:read"})
-     */
-    private $type;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     * @Groups({"product:read"})
-     */
-    private $gender;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
