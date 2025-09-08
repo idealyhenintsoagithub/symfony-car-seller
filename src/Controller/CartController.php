@@ -78,7 +78,8 @@ class CartController extends AbstractController
         }
 
         return $this->render("shop/cart/validate-cart.html.twig", [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'cart' => $cartManager->getCurrentCart(),
         ]);
     }
 }

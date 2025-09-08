@@ -21,8 +21,8 @@
     </div>
     {{ form_start(form) }}
       <div class="row">
-        <div class="col-sm-8 order-container">
-          <div class="row justify-content-end p-4">
+        <div class="col-sm-7 order-container">
+          <div class="row justify-content-end py-4">
             <div class="col-sm-3">
                 {{ form_widget(form.save) }}
             </div>
@@ -32,14 +32,14 @@
           </div>
           {% if cart.orderItems.count > 0 %}
             {% for orderItem in form.orderItems %}
-              <div class="d-flex mb-5 align-items-center order-item bg-white p-4 rounded-2">
+              <div class="d-flex mb-5 align-items-center order-item bg-white rounded-2">
                 <div class="order-item-media">
                   <img 
                     src="{{ asset('/images/products/' ~ orderItem.vars.data.product.image ) }}" 
                     alt="{{ orderItem.vars.data.product.image }}"
                   >
                 </div>
-                <div class="order-item-content">
+                <div class="order-item-content p-4">
                     <div class="d-flex justify-content-between">
                         <p class="product-name">
                             {{ orderItem.vars.data.product.title }}
@@ -82,7 +82,7 @@
               </div>
           {% endif %}
         </div>
-        <div class="col-sm-4 cart-detail-container p-4 rounded-4 bg-white d-flex flex-column justify-content-between">
+        <div class="col-sm-4 offset-lg-1 cart-detail-container p-4 rounded-4 bg-white d-flex flex-column justify-content-between">
           <div>
               <h4>Detail du pannier</h4>
               <div class="d-flex justify-content-between">
