@@ -1,6 +1,6 @@
 
 <div class="col-sm-3 product-item mb-4">
-  <div class="product-item-content rounded-3 bg-white">
+  <div class="product-item-content rounded-3 bg-white h-100">
     <a href={{ path("product_detail", { id: product.id }) }} class="text-decoration-none">
       <img
         src={{ asset(product.image ? "images/products/" ~ product.image : "images/rover.jpg") }}
@@ -8,7 +8,7 @@
         style="height: 200px; width: 100%; object-fit: cover;"
         class="rounded-3"
       />
-      <div class="p-3">
+      <div class="p-3 h-100">
         <h6 class="pt-4">{{ product.title }}</h6>
         <div class="py-1">
           {{ product.description }}
@@ -26,3 +26,5 @@
     </a>
   </div>
 </div>
+
+https://meet.google.com/ssh-nohs-qbv
