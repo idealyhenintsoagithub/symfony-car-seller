@@ -1,0 +1,94 @@
+<a
+    class="btn btn-link text-decoration-none fs-5 fw-semibold text-dark"
+    data-bs-toggle="collapse"
+    href="#payment-method"
+    role="button"
+    aria-expanded="false"
+    aria-controls="payment-method"
+>
+    <i class="bi bi-credit-card pe-2"></i>
+    {{ 'validationCard.title.paymentMethod'|trans }}
+</a>
+<div class="collapse multi-collapse" id="payment-method">
+    <div class="card card-body">
+      <div class="card border-0 mb-4">
+          <div class="card-body pb-0">
+              <form>
+                  <!-- Paypal -->
+                  <div class="form-check mb-3 p-0">
+                      <div class="card border mb-2">
+                          <div class="card-body d-flex align-items-center">
+                              <input class="form-check-input me-3" type="radio" name="paymentMethod" id="paypal" value="paypal">
+                              <div>
+                                  <label class="form-check-label fw-semibold" for="paypal">Payment with Paypal</label>
+                                  <div class="text-muted small">You will be redirected to PayPal website to complete your purchase securely.</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Credit/Debit Card -->
+                  <div class="form-check mb-3 p-0">
+                      <div class="card border mb-2">
+                          <div class="card-body">
+                              <div class="d-flex align-items-center mb-2">
+                                  <input class="form-check-input me-3" type="radio" name="paymentMethod" id="card" value="card">
+                                  <div>
+                                      <label class="form-check-label fw-semibold" for="card">Credit / Debit Card</label>
+                                      <div class="text-muted small">
+                                          Safe money transfer using your bank accou k account. We support Mastercard tercard, Visa, Discover and Stripe.
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="cardNumber" class="form-label">Card Number</label>
+                                  <input type="text" class="form-control" id="cardNumber" placeholder="1234 4567 6789 4321">
+                              </div>
+                              <div class="row g-2">
+                                  <div class="col-md-6">
+                                      <label for="cardName" class="form-label">Name on card</label>
+                                      <input type="text" class="form-control" id="cardName" placeholder="Enter your first name">
+                                  </div>
+                                  <div class="col-md-3">
+                                      <label for="cardExpiry" class="form-label">Expiry date</label>
+                                      <div class="input-group">
+                                          <input type="text" class="form-control" id="cardExpiry" placeholder="Select Date">
+                                          <span class="input-group-text bg-white"><i class="bi bi-calendar"></i></span>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <label for="cardCVV" class="form-label">CVV code</label>
+                                      <input type="text" class="form-control" id="cardCVV" placeholder="xxx">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Payoneer -->
+                  <div class="form-check mb-3 p-0">
+                      <div class="card border mb-2">
+                          <div class="card-body d-flex align-items-center">
+                              <input class="form-check-input me-3" type="radio" name="paymentMethod" id="payoneer" value="payoneer">
+                              <div>
+                                  <label class="form-check-label fw-semibold" for="payoneer">Pay with Payoneer</label>
+                                  <div class="text-muted small">You will be redirected to Payoneer website to complete your purchase securely.</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Cash on Delivery -->
+                  <div class="form-check mb-3 p-0">
+                      <div class="card border mb-2">
+                          <div class="card-body d-flex align-items-center">
+                              <input class="form-check-input me-3" type="radio" name="paymentMethod" id="cod" value="cod">
+                              <div>
+                                  <label class="form-check-label fw-semibold" for="cod">Cash on Delivery</label>
+                                  <div class="text-muted small">Pay with cash when your order is delivered.</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+    </div>
+</div>

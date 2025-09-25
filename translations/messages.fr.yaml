@@ -5,6 +5,12 @@ navbar:
 
 common:
   stockEmpty: Stock epuisé
+  actions:
+    edit: "Modifier"
+    delete: "Supprimer"
+    add: "Ajouter"
+    cancel: "Annuler"
+    save: "Enregistrer"
 
 home:
   title:
@@ -21,3 +27,11 @@ continent:
   asia: "Asie"
   america: "Amerique"
   australia: "Australi"
+
+validationCard:
+  title:
+    adress: "Adresse de livraison"
+    payment: "Moyen de paiement"
+    addNewAdress: "Nouvelle adresse"
+    paymentMethod: "Moyen de paiement"
+    deliveryInstruction: "Instructions de livraison"
