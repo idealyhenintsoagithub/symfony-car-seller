@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between">
+    <a
+        class="btn btn-link text-decoration-none fs-5 fw-semibold text-dark"
+        data-bs-toggle="collapse"
+        href="#multiCollapseExample1"
+        role="button"
+        aria-expanded="false"
+        aria-controls="multiCollapseExample1"
+    >
+        <i class="bi bi-geo-alt pe-2"></i>
+        {{ 'validationCard.title.adress'|trans }}
+    </a>
+    <button
+        class="btn btn-outline-secondary btn-sm"
+        data-bs-toggle="modal" data-bs-target="#newAdressModal"
+    >
+        {{ 'validationCard.title.addNewAdress'|trans }}
+    </button>
+</div>
+<div class="collapse multi-collapse" id="multiCollapseExample1">
+    <div class="card card-body">
+        {% include 'shop/cart/delivery-address-item.html.twig' %}
+    </div>
+</div>
+{% include 'shop/cart/create-address-modal.html.twig' %}

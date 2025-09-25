@@ -1,0 +1,66 @@
+<div
+    class="modal fade"
+    id="newAdressModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="newAdressModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="newAdressModalLabel">
+                {{ 'validationCard.title.addNewAdress'|trans }}
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="addressFullName" class="form-label">Nom complet</label>
+                    <input type="text" class="form-control" id="addressFullName" placeholder="Entrez votre nom complet" required>
+                </div>
+                <div class="mb-3">
+                    <label for="addressStreet" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="addressStreet" placeholder="Rue, numéro" required>
+                </div>
+                <div class="mb-3">
+                    <label for="addressCity" class="form-label">Ville</label>
+                    <input type="text" class="form-control" id="addressCity" placeholder="Ville" required>
+                </div>
+                <div class="mb-3">
+                    <label for="addressPostalCode" class="form-label">Code postal</label>
+                    <input type="text" class="form-control" id="addressPostalCode" placeholder="Code postal" required>
+                </div>
+                <div class="mb-3">
+                    <label for="addressCountry" class="form-label">Pays</label>
+                    <select class="form-select" id="addressCountry" required>
+                        <option value="">Sélectionnez un pays</option>
+                        <option value="FR">France</option>
+                        <option value="MG">Madagascar</option>
+                        <option value="US">États-Unis</option>
+                        <!-- Ajoutez d'autres pays si nécessaire -->
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="addressPhone" class="form-label">Téléphone</label>
+                    <input type="tel" class="form-control" id="addressPhone" placeholder="Numéro de téléphone">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button
+                type="button"
+                class="btn btn-link text-decoration-none text-secondary fw-semibold"
+                data-bs-dismiss="modal"
+            >
+                  {{ 'common.actions.cancel'|trans }}
+            </button>
+            <button type="button" class="btn btn-link text-decoration-none text-primary fw-semibold">
+                {{ 'common.actions.save'|trans }}
+            </button>
+        </div>
+        </div>
+    </div>
+</div>
