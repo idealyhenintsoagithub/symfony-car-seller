@@ -36,7 +36,9 @@
               {% if column.field ?? false %}
                 {% set lastData = d %}
                 {% for item in column.field|split('.') %}
-                  {% set lastData = attribute(lastData, item) %}
+                  {% if lastData is not null and attribute(lastData, item) is not null %}
+                    {% set lastData = attribute(lastData, item) %}
+                  {% endif %}
                 {% endfor %}
 
                 {{ formatContent.format(value, column, lastData) }}
@@ -52,12 +54,17 @@
             {% elseif column.field ?? false %}
               {% set data = value %}
               {% for item in column.field|split('.') %}
-                {% set data = attribute(data, item) %}
+                {% if attribute(data, item) is not null %}
+                  {% set data = attribute(data, item) %}
+                {% endif %}
               {% endfor %}
 
               {{ data }}
             {% else %}
-              {% set content = attribute(value, column.name) %}
+              {% set content = null %}
+              {% if attribute(value, column.name) is not null %}
+                {% set content = attribute(value, column.name) %}
+              {% endif %}
               {% if content.timestamp is defined %}
                 {{ content|date('d/m/Y') }}
               {% elseif column.type|default('string') == 'number' %}

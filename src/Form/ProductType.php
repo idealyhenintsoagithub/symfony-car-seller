@@ -37,12 +37,6 @@ class ProductType extends AbstractType
             ->add('priceTtc', MoneyType::class, [
                 'label' => 'Prix (TTC)'
             ])
-            ->add('type', TextType::class, [
-                'label' => 'Type de vehicule'
-            ])
-            ->add('gender', TextType::class, [
-                'label' => 'Genre'
-            ])
             ->add('brand', EntityType::class, [
                 'label' => 'Marque',
                 'class' => Vendor::class,
