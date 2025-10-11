@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="container mt-5">
-    <div class="login-page-container mx-auto w-10">
+    <div class="login-page-container mx-auto w-10 bg-white p-5 shadow-sm">
       <form method="post">
         {% if error %}
           <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -40,7 +40,7 @@
             Connexion
           </button>
           <div class="text-end pt-3">
-            <a href="{{ path('app_new_user') }}">
+            <a href="{{ path('app_new_user') }}" class="text-decoration-none">
               Crée un compte
             </a>
           </div>

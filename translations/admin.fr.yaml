@@ -4,6 +4,7 @@ title:
   product: Liste des produits
   stockManagement: Gestion de stock
   newProduct: Création de produit
+  brand: Marque
 
 product:
   title:
@@ -31,7 +32,7 @@ vendor:
 order:
   title:
     detail: Detail de la commande
-  
+
   label:
     clientName: Client
     product: Produit

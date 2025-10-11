@@ -1,0 +1,17 @@
+{% trans_default_domain 'admin' %}
+
+{% extends 'admin/admin-layout.html.twig' %}
+
+{% block title %}New Brand{% endblock %}
+
+{% set actions = [
+  {path: 'app_brand_index', label: 'Liste des marques', 'iconClass': 'bi bi-plus-lg'},
+] %}
+
+{% block pageActions %}
+    {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+{% endblock %}
+
+{% block body %}
+    {{ include('admin/brand/_form.html.twig') }}
+{% endblock %}

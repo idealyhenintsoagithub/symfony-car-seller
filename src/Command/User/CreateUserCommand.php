@@ -53,6 +53,7 @@ class CreateUserCommand extends Command
         $user = new User();
         $user->setEmail($email);
         $user->setPassword($this->passwordHasher->hashPassword($user, $password));
+        $user->setRoles($roles);
         $this->em->persist($user);
         $this->em->flush();
 

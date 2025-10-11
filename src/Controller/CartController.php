@@ -56,10 +56,6 @@ class CartController extends AbstractController
         $user = $this->getUser();
         $client = new Client();
         $cart = $cartManager->getCurrentCart();
-
-        if ($user) {
-            $client = $user->getClient();
-        }
         
         $form = $this->createForm(ClientClientType::class, $client);
         $form->handleRequest($request);

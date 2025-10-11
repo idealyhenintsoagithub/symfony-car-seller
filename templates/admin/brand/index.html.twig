@@ -1,0 +1,30 @@
+{% trans_default_domain 'admin' %}
+
+{% extends 'admin/admin-layout.html.twig' %}
+
+{% set actions = [
+  {path: 'app_brand_new', label: 'Crée un marque', 'iconClass': 'bi bi-plus-lg'},
+] %}
+
+{% set columns = [
+    {
+        name: 'name',
+        field: 'name',
+        title: 'Nom de la marque',
+    },
+    {
+        name: 'logo',
+        field: 'logo',
+        title: 'Logo du marque',
+    },
+] %}
+
+{% block pageTitle %}{{ 'title.brand'|trans }}{% endblock %}
+
+{% block pageActions %}
+    {{ include("shared/page-actions.html.twig", { actions: actions }) }}
+{% endblock %}
+
+{% block body %}
+  {{ include('core/datatable.html.twig', {columns: columns, data: brands}) }}
+{% endblock %}

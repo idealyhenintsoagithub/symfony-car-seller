@@ -1,3 +1,12 @@
+{% set menus = [
+  {
+    name: 'app_product_index',
+    url: 'app_product_index',
+    label: '',
+    children: '',
+  }
+] %}
+
 <nav 
   class="navbar navbar-light navbar-vertical navbar-expand-sm col-sm-2 mr-1"
   style="height: 100vh;"
@@ -50,6 +59,12 @@
             <a class="nav-link text-white fw-bold" href="{{ path('app_order') }}">
               <i class="bi bi-cart-plus-fill"></i>
               Commande
+            </a>
+          </li>
+          <li class="nav-item {{ app.request.get('_route') == 'app_brand_index' ? 'active' : '' }}">
+            <a class="nav-link text-white fw-bold" href="{{ path('app_brand_index') }}">
+              <i class="bi bi-cart-plus-fill"></i>
+              Marques
             </a>
           </li>
         </ul>
