@@ -31,3 +31,9 @@ run php bin/console cache:clear
   - php bin/console doctrine:fixtures:load
 
 Enjoy the ecommerce demo
+
+Docker setup
+  - docker compose up --build
+  - open http://localhost:8000
+  - the app container will create the database and run the migrations automatically
+  - mailpit is available at http://localhost:8025
