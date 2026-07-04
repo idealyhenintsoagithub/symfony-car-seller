@@ -25,5 +25,11 @@ services:
     volumes:
       - database_data:/var/lib/mysql
 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+        - "8026:8080"
+
 volumes:
   database_data:

@@ -29,15 +29,17 @@ RUN sed -i "s#/var/www/html#${APACHE_DOCUMENT_ROOT}#g" /etc/apache2/sites-availa
 
 WORKDIR /var/www/symfony
 
+COPY . .
+
 COPY composer.json composer.lock ./
-COPY package.json package-lock.json ./
-RUN composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader \
-    && npm install --no-audit --no-fund
+# COPY package.json package-lock.json ./
+RUN npm install --global yarn@1
+RUN composer install
+RUN yarn install
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-COPY . .
 RUN chown -R www-data:www-data var public config \
     && composer dump-env dev \
     && php bin/console cache:clear \
