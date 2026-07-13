@@ -1,52 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connexion</title>
     {% block stylesheets %}
       {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
-<body>
-  <div class="container mt-5">
-    <div class="login-page-container mx-auto w-10">
-      <form method="post">
-        {% if error %}
-          <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+<body class="bg-light">
+  <div class="container min-vh-100 d-flex align-items-center justify-content-center py-5">
+    <div class="row w-100 justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+        <div class="card shadow-sm border-0 rounded-4">
+          <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+              <h1 class="h3 fw-bold mb-2">Connexion</h1>
+              <p class="text-muted mb-0">Accédez à votre espace</p>
+            </div>
 
-        {% if app.user %}
-          <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            {% if error %}
+              <div class="alert alert-danger" role="alert">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+              </div>
+            {% endif %}
+
+            {% if app.user %}
+              <div class="alert alert-info mb-4" role="alert">
+                Vous êtes déjà connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}" class="alert-link">Se déconnecter</a>
+              </div>
+            {% endif %}
+
+            <form method="post" class="needs-validation" novalidate>
+              <div class="form-floating mb-3">
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="name@example.com" required autofocus>
+                <label for="inputEmail">Adresse email</label>
+              </div>
+
+              <div class="form-floating mb-4">
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Mot de passe" required>
+                <label for="inputPassword">Mot de passe</label>
+              </div>
+
+              <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+              <input type="hidden" name="_target_path" value="/">
+
+              <button class="btn btn-primary w-100 py-2" type="submit">
+                Se connecter
+              </button>
+            </form>
+
+            <div class="text-center mt-4">
+              <a href="{{ path('app_new_user') }}" class="text-decoration-none">
+                Créer un compte
+              </a>
+            </div>
           </div>
-        {% endif %}
-
-          <h1 class="h3 mb-3 font-weight-normal">Page de connexion</h1>
-          <div>
-            <label for="inputEmail">Email</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-          </div>
-          <div class="mt-4">
-            <label for="inputPassword">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-          </div>
-
-          <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-          <input type="hidden" name="_target_path" value="/">
-
-          <button class="btn btn-primary w-100 mt-4" type="submit">
-            Connexion
-          </button>
-          <div class="text-end pt-3">
-            <a href="{{ path('app_new_user') }}">
-              Crée un compte
-            </a>
-          </div>
-      </form>
+        </div>
+      </div>
     </div>
   </div>
+
   {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
   {% endblock %}
