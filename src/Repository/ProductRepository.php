@@ -50,8 +50,7 @@ class ProductRepository extends ServiceEntityRepository
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-       ;
+            ->getResult();
     }
 
     public function getProductPerVendor(): array
@@ -60,10 +59,9 @@ class ProductRepository extends ServiceEntityRepository
             ->select('brand.name vendor, COUNT(p) productNumber')
             ->join('p.brand', 'brand')
             ->groupBy('brand')
-            ->orderBy('p.createdAt', 'ASC')
+            // ->orderBy('p.createdAt', 'ASC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     public function getProductByBrand(String $brand)

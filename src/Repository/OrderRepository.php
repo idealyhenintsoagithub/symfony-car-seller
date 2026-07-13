@@ -78,10 +78,9 @@ class OrderRepository extends ServiceEntityRepository
             ->setParameters([
                 'status' => Order::STATUS_CART_VALIDATE
             ])
-            ->groupBy('product.brand')
+            // ->groupBy('product.brand')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
 //    /**
